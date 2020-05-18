@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		9004CE3E2472832C0015D21B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9004CE3D2472832C0015D21B /* AppDelegate.swift */; };
-		9004CE402472832C0015D21B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9004CE3F2472832C0015D21B /* SceneDelegate.swift */; };
 		9004CE422472832C0015D21B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9004CE412472832C0015D21B /* ViewController.swift */; };
 		9004CE452472832C0015D21B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9004CE432472832C0015D21B /* Main.storyboard */; };
 		9004CE47247283310015D21B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9004CE46247283310015D21B /* Assets.xcassets */; };
@@ -19,9 +18,8 @@
 /* Begin PBXFileReference section */
 		02D45B28D0C07A14B92BFD2D /* Pods-conan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conan.release.xcconfig"; path = "Target Support Files/Pods-conan/Pods-conan.release.xcconfig"; sourceTree = "<group>"; };
 		068922B7A6B71083BA92B413 /* Pods_conan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_conan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9004CE3A2472832C0015D21B /* conan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = conan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9004CE3A2472832C0015D21B /* 柯南事件簿.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "柯南事件簿.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9004CE3D2472832C0015D21B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9004CE3F2472832C0015D21B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9004CE412472832C0015D21B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9004CE442472832C0015D21B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9004CE46247283310015D21B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,7 +46,6 @@
 				EC5F4ECC3F6A7D3A6B2BC6E5 /* Pods-conan.debug.xcconfig */,
 				02D45B28D0C07A14B92BFD2D /* Pods-conan.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -73,7 +70,7 @@
 		9004CE3B2472832C0015D21B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9004CE3A2472832C0015D21B /* conan.app */,
+				9004CE3A2472832C0015D21B /* 柯南事件簿.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				9004CE3D2472832C0015D21B /* AppDelegate.swift */,
-				9004CE3F2472832C0015D21B /* SceneDelegate.swift */,
 				9004CE412472832C0015D21B /* ViewController.swift */,
 				9004CE432472832C0015D21B /* Main.storyboard */,
 				9004CE46247283310015D21B /* Assets.xcassets */,
@@ -111,7 +107,7 @@
 			);
 			name = conan;
 			productName = conan;
-			productReference = 9004CE3A2472832C0015D21B /* conan.app */;
+			productReference = 9004CE3A2472832C0015D21B /* 柯南事件簿.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -209,7 +205,6 @@
 			files = (
 				9004CE422472832C0015D21B /* ViewController.swift in Sources */,
 				9004CE3E2472832C0015D21B /* AppDelegate.swift in Sources */,
-				9004CE402472832C0015D21B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +357,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.ifable.conan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "柯南事件簿";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -381,7 +376,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.ifable.conan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "柯南事件簿";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
