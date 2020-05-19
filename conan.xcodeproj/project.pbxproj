@@ -12,6 +12,9 @@
 		9004CE452472832C0015D21B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9004CE432472832C0015D21B /* Main.storyboard */; };
 		9004CE47247283310015D21B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9004CE46247283310015D21B /* Assets.xcassets */; };
 		9004CE4A247283310015D21B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9004CE48247283310015D21B /* LaunchScreen.storyboard */; };
+		903B83502472C8D300BF0F63 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903B834F2472C8D300BF0F63 /* R.generated.swift */; };
+		903B83522474225A00BF0F63 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903B83512474225A00BF0F63 /* DataViewController.swift */; };
+		903B83542474230F00BF0F63 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903B83532474230F00BF0F63 /* ModelController.swift */; };
 		EC9F7E1AB4B9EAC4875B3099 /* Pods_conan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 068922B7A6B71083BA92B413 /* Pods_conan.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +28,9 @@
 		9004CE46247283310015D21B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9004CE49247283310015D21B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9004CE4B247283310015D21B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		903B834F2472C8D300BF0F63 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = ../../toolKitDemo/R.generated.swift; sourceTree = "<group>"; };
+		903B83512474225A00BF0F63 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		903B83532474230F00BF0F63 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		EC5F4ECC3F6A7D3A6B2BC6E5 /* Pods-conan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conan.debug.xcconfig"; path = "Target Support Files/Pods-conan/Pods-conan.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,12 +84,15 @@
 		9004CE3C2472832C0015D21B /* conan */ = {
 			isa = PBXGroup;
 			children = (
+				903B83532474230F00BF0F63 /* ModelController.swift */,
 				9004CE3D2472832C0015D21B /* AppDelegate.swift */,
 				9004CE412472832C0015D21B /* ViewController.swift */,
 				9004CE432472832C0015D21B /* Main.storyboard */,
 				9004CE46247283310015D21B /* Assets.xcassets */,
 				9004CE48247283310015D21B /* LaunchScreen.storyboard */,
 				9004CE4B247283310015D21B /* Info.plist */,
+				903B834F2472C8D300BF0F63 /* R.generated.swift */,
+				903B83512474225A00BF0F63 /* DataViewController.swift */,
 			);
 			path = conan;
 			sourceTree = "<group>";
@@ -96,6 +105,7 @@
 			buildConfigurationList = 9004CE4E247283310015D21B /* Build configuration list for PBXNativeTarget "conan" */;
 			buildPhases = (
 				FFEAB7B27EFA98DFA8683B16 /* [CP] Check Pods Manifest.lock */,
+				903B834E2472C83900BF0F63 /* ShellScript */,
 				9004CE362472832C0015D21B /* Sources */,
 				9004CE372472832C0015D21B /* Frameworks */,
 				9004CE382472832C0015D21B /* Resources */,
@@ -174,6 +184,25 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-conan/Pods-conan-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		903B834E2472C83900BF0F63 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		FFEAB7B27EFA98DFA8683B16 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -203,8 +232,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				903B83522474225A00BF0F63 /* DataViewController.swift in Sources */,
+				903B83542474230F00BF0F63 /* ModelController.swift in Sources */,
 				9004CE422472832C0015D21B /* ViewController.swift in Sources */,
 				9004CE3E2472832C0015D21B /* AppDelegate.swift in Sources */,
+				903B83502472C8D300BF0F63 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
