@@ -82,6 +82,7 @@
 		9004CE3C2472832C0015D21B /* conan */ = {
 			isa = PBXGroup;
 			children = (
+				903EFCF924782D8300EAADAC /* Controller */,
 				90EED4622477D0BE0068834D /* Model */,
 				906F80842474BB3F0040A695 /* R.generated.swift */,
 				9004CE3D2472832C0015D21B /* AppDelegate.swift */,
@@ -89,9 +90,16 @@
 				9004CE46247283310015D21B /* Assets.xcassets */,
 				9004CE48247283310015D21B /* LaunchScreen.storyboard */,
 				9004CE4B247283310015D21B /* Info.plist */,
-				90EED4602477D07D0068834D /* CaseCardViewController.swift */,
 			);
 			path = conan;
+			sourceTree = "<group>";
+		};
+		903EFCF924782D8300EAADAC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				90EED4602477D07D0068834D /* CaseCardViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		90EED4622477D0BE0068834D /* Model */ = {

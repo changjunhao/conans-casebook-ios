@@ -11,6 +11,7 @@ import Foundation
 struct CaseBook {
     var id: Int
     var url: String
+    var urlh: String
     var logo: String
     var year: Int
     var waiting: Bool
