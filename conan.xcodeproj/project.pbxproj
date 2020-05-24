@@ -11,6 +11,7 @@
 		9004CE422472832C0015D21B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9004CE412472832C0015D21B /* ViewController.swift */; };
 		9004CE47247283310015D21B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9004CE46247283310015D21B /* Assets.xcassets */; };
 		9004CE4A247283310015D21B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9004CE48247283310015D21B /* LaunchScreen.storyboard */; };
+		903EFCFC247A1BB000EAADAC /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903EFCFB247A1BB000EAADAC /* TriangleView.swift */; };
 		906F80852474BB3F0040A695 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906F80842474BB3F0040A695 /* R.generated.swift */; };
 		90EED4612477D07D0068834D /* CaseCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EED4602477D07D0068834D /* CaseCardViewController.swift */; };
 		90EED4642477D11B0068834D /* CaseBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EED4632477D11B0068834D /* CaseBook.swift */; };
@@ -26,6 +27,7 @@
 		9004CE46247283310015D21B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9004CE49247283310015D21B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9004CE4B247283310015D21B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		903EFCFB247A1BB000EAADAC /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		906F80842474BB3F0040A695 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		90EED4602477D07D0068834D /* CaseCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseCardViewController.swift; sourceTree = "<group>"; };
 		90EED4632477D11B0068834D /* CaseBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseBook.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		9004CE3C2472832C0015D21B /* conan */ = {
 			isa = PBXGroup;
 			children = (
+				903EFCFA247A1B6A00EAADAC /* Component */,
 				903EFCF924782D8300EAADAC /* Controller */,
 				90EED4622477D0BE0068834D /* Model */,
 				906F80842474BB3F0040A695 /* R.generated.swift */,
@@ -100,6 +103,14 @@
 				90EED4602477D07D0068834D /* CaseCardViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		903EFCFA247A1B6A00EAADAC /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				903EFCFB247A1BB000EAADAC /* TriangleView.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		90EED4622477D0BE0068834D /* Model */ = {
@@ -248,6 +259,7 @@
 				906F80852474BB3F0040A695 /* R.generated.swift in Sources */,
 				90EED4642477D11B0068834D /* CaseBook.swift in Sources */,
 				9004CE422472832C0015D21B /* ViewController.swift in Sources */,
+				903EFCFC247A1BB000EAADAC /* TriangleView.swift in Sources */,
 				9004CE3E2472832C0015D21B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

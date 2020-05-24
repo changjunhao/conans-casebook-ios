@@ -29,11 +29,12 @@ class CaseCardViewController: UIViewController {
         cardView.layer.shadowRadius = 14
         
         imageView = UIImageView()
-        imageView.layer.cornerRadius = 10
-        imageView.layer.masksToBounds = true
+//        imageView.layer.cornerRadius = 10
+//        imageView.layer.masksToBounds = true
         
         super.init(nibName: nil, bundle: nil)
         self.caseBook = caseBook
+        
     }
     
     required init?(coder: NSCoder) {
@@ -60,17 +61,30 @@ class CaseCardViewController: UIViewController {
             make.center.equalTo(cardView)
         }
         imageView.kf.setImage(with: URL(string: self.caseBook.url))
+        let caShapeLayer = CAShapeLayer()
+        caShapeLayer.path = UIBezierPath.init(roundedRect: CGRect(x: 0, y: 0, width: self.view.bounds.size.width * 0.8, height: self.view.bounds.size.width * 0.8 * 7 / 5), byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 10, height: 10)).cgPath
+        imageView.layer.mask = caShapeLayer
         
-        let gradient = CAGradientLayer()
-        gradient.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width * 0.8, height: self.view.bounds.size.width * 0.8 * 7 / 5)
-        gradient.startPoint = CGPoint(x: 0, y: 0)
-        gradient.endPoint = CGPoint(x: 0, y: 1)
-        gradient.colors = [UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor, UIColor(red: 0, green: 0, blue: 0, alpha: 0.8).cgColor]
-        gradient.cornerRadius = 10
-        gradient.masksToBounds = true
-        cardView.layer.addSublayer(gradient)
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width * 0.8, height: self.view.bounds.size.width * 0.8 * 7 / 5)
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        gradientLayer.colors = [UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor, UIColor(red: 0, green: 0, blue: 0, alpha: 0.8).cgColor]
+        imageView.layer.addSublayer(gradientLayer)
         
+        let logoImageView = UIImageView()
+        imageView.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints {
+            make in
+            make.width.equalTo(self.view.bounds.size.width * 0.72)
+            make.height.equalTo(52)
+            make.bottom.equalTo(-20)
+            make.centerX.equalTo(cardView)
+        }
+        logoImageView.kf.setImage(with: URL(string: self.caseBook.logo))
         
+        let triangleView = TriangleView(caseBook: self.caseBook)
+        imageView.addSubview(triangleView)
     }
 
     @objc private func handleRotate() {
@@ -78,12 +92,11 @@ class CaseCardViewController: UIViewController {
             if self.select {
                 self.select = false
                 self.imageView.kf.setImage(with: URL(string: self.caseBook.url))
-                UIView.setAnimationTransition(.flipFromLeft, for: self.cardView, cache: true)
             } else {
                 self.select = true
                 self.imageView.kf.setImage(with: URL(string: self.caseBook.urlh))
-                UIView.setAnimationTransition(.flipFromLeft, for: self.cardView, cache: true)
             }
+            UIView.setAnimationTransition(.flipFromLeft, for: self.cardView, cache: true)
         })
     }
 }
