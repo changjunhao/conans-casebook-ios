@@ -15,6 +15,7 @@ class CaseCardViewController: UIViewController {
     private var caseBook: CaseBook!
     private var cardView: UIView
     private var imageView: UIImageView
+    private var logoImageView: UIImageView
     private var select: Bool = false
     
     init(caseBook: CaseBook) {
@@ -31,6 +32,7 @@ class CaseCardViewController: UIViewController {
         imageView = UIImageView()
 //        imageView.layer.cornerRadius = 10
 //        imageView.layer.masksToBounds = true
+        logoImageView = UIImageView()
         
         super.init(nibName: nil, bundle: nil)
         self.caseBook = caseBook
@@ -72,7 +74,6 @@ class CaseCardViewController: UIViewController {
         gradientLayer.colors = [UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor, UIColor(red: 0, green: 0, blue: 0, alpha: 0.8).cgColor]
         imageView.layer.addSublayer(gradientLayer)
         
-        let logoImageView = UIImageView()
         imageView.addSubview(logoImageView)
         logoImageView.snp.makeConstraints {
             make in
@@ -92,9 +93,15 @@ class CaseCardViewController: UIViewController {
             if self.select {
                 self.select = false
                 self.imageView.kf.setImage(with: URL(string: self.caseBook.url))
+                self.logoImageView.kf.setImage(with: URL(string: self.caseBook.logo))
             } else {
                 self.select = true
                 self.imageView.kf.setImage(with: URL(string: self.caseBook.urlh))
+                if self.caseBook.waiting {
+                    self.logoImageView.kf.setImage(with: URL(string: "https://oss-materials.ifable.cn/conan/mov-e.png"))
+                } else {
+                    self.logoImageView.kf.setImage(with: URL(string: "https://oss-materials.ifable.cn/conan/mov-d.png"))
+                }
             }
             UIView.setAnimationTransition(.flipFromLeft, for: self.cardView, cache: true)
         })
