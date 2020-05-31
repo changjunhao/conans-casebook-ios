@@ -22,7 +22,6 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
             audioItem = AVPlayerItem(asset: asset)
             
             avPlayer = AVPlayer(playerItem: audioItem)
-            avPlayer?.seek(to: CMTime(seconds: 270, preferredTimescale: 1))
             avPlayer?.preventsDisplaySleepDuringVideoPlayback = true
             avPlayer?.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), queue: DispatchQueue.main, using: { time in
                 self.audioPlayer.currentTime = self.timeFilter(seconds: CMTimeGetSeconds(time))
