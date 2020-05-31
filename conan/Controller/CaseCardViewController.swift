@@ -74,7 +74,7 @@ class CaseCardViewController: UIViewController {
         gradientLayer.colors = [UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor, UIColor(red: 0, green: 0, blue: 0, alpha: 0.8).cgColor]
         imageView.layer.addSublayer(gradientLayer)
         
-        imageView.addSubview(logoImageView)
+        cardView.addSubview(logoImageView)
         logoImageView.snp.makeConstraints {
             make in
             make.width.equalTo(self.view.bounds.size.width * 0.72)
@@ -83,6 +83,9 @@ class CaseCardViewController: UIViewController {
             make.centerX.equalTo(cardView)
         }
         logoImageView.kf.setImage(with: URL(string: self.caseBook.logo))
+        logoImageView.isUserInteractionEnabled = true
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleNavigate))
+        logoImageView.addGestureRecognizer(tapGestureRecognizer)
         
         let triangleView = TriangleView(caseBook: self.caseBook)
         imageView.addSubview(triangleView)
@@ -105,5 +108,17 @@ class CaseCardViewController: UIViewController {
             }
             UIView.setAnimationTransition(.flipFromLeft, for: self.cardView, cache: true)
         })
+    }
+    
+    @objc func handleNavigate() {
+        if self.caseBook.waiting {
+            let alert = UIAlertController(title: nil, message: "静候上线", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let viewController = IncidentViewController(id: self.caseBook.id)
+            viewController.view.backgroundColor = .white
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }

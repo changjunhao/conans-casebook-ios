@@ -105,15 +105,33 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.image` struct is generated, and contains static references to 1 images.
+  /// This `R.image` struct is generated, and contains static references to 3 images.
   struct image {
     /// Image `bgImage`.
     static let bgImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "bgImage")
+    /// Image `pauseIcon`.
+    static let pauseIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "pauseIcon")
+    /// Image `playIcon`.
+    static let playIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "playIcon")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "bgImage", bundle: ..., traitCollection: ...)`
     static func bgImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.bgImage, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "pauseIcon", bundle: ..., traitCollection: ...)`
+    static func pauseIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.pauseIcon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "playIcon", bundle: ..., traitCollection: ...)`
+    static func playIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.playIcon, compatibleWith: traitCollection)
     }
     #endif
 
