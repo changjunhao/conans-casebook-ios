@@ -14,6 +14,7 @@ class IncidentViewController: UIViewController {
     
     var id: Int
     var audioPlayer: AudioPlayer?
+    var incident: Incident?
     
     init(id: Int) {
         self.id = id
@@ -26,6 +27,13 @@ class IncidentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let loader = IncidentLoader()
+        loader.loadListData(id: self.id) {
+            [weak self] succcess, incident in
+            if (succcess) {
+                self?.incident = incident
+            }
+        }
         if #available(iOS 13.0, *) {
             self.view.backgroundColor = .systemBackground
         } else {

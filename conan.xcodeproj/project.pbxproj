@@ -13,6 +13,8 @@
 		9004CE4A247283310015D21B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9004CE48247283310015D21B /* LaunchScreen.storyboard */; };
 		903EFCFC247A1BB000EAADAC /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903EFCFB247A1BB000EAADAC /* TriangleView.swift */; };
 		906F80852474BB3F0040A695 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906F80842474BB3F0040A695 /* R.generated.swift */; };
+		90AC714224927572009B374A /* IncidentLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AC714124927572009B374A /* IncidentLoader.swift */; };
+		90AC714424927B57009B374A /* Incident.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AC714324927B57009B374A /* Incident.swift */; };
 		90CF658C24835740003EF768 /* IncidentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CF658B24835740003EF768 /* IncidentViewController.swift */; };
 		90CF658E24837E79003EF768 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CF658D24837E79003EF768 /* AudioPlayer.swift */; };
 		90CF65912483ECDB003EF768 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CF65902483ECDB003EF768 /* AudioPlayerViewController.swift */; };
@@ -32,6 +34,8 @@
 		9004CE4B247283310015D21B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		903EFCFB247A1BB000EAADAC /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		906F80842474BB3F0040A695 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		90AC714124927572009B374A /* IncidentLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLoader.swift; sourceTree = "<group>"; };
+		90AC714324927B57009B374A /* Incident.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Incident.swift; sourceTree = "<group>"; };
 		90CF658B24835740003EF768 /* IncidentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentViewController.swift; sourceTree = "<group>"; };
 		90CF658D24837E79003EF768 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		90CF65902483ECDB003EF768 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				90EED4632477D11B0068834D /* CaseBook.swift */,
+				90AC714124927572009B374A /* IncidentLoader.swift */,
+				90AC714324927B57009B374A /* Incident.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -272,11 +278,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90AC714424927B57009B374A /* Incident.swift in Sources */,
 				90EED4612477D07D0068834D /* CaseCardViewController.swift in Sources */,
 				90CF658C24835740003EF768 /* IncidentViewController.swift in Sources */,
 				906F80852474BB3F0040A695 /* R.generated.swift in Sources */,
 				90CF658E24837E79003EF768 /* AudioPlayer.swift in Sources */,
 				90EED4642477D11B0068834D /* CaseBook.swift in Sources */,
+				90AC714224927572009B374A /* IncidentLoader.swift in Sources */,
 				9004CE422472832C0015D21B /* ViewController.swift in Sources */,
 				903EFCFC247A1BB000EAADAC /* TriangleView.swift in Sources */,
 				9004CE3E2472832C0015D21B /* AppDelegate.swift in Sources */,
