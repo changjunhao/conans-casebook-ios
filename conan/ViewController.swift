@@ -41,7 +41,7 @@ class ViewController: UIViewController, UIPageViewControllerDelegate, UIPageView
 
         var caseBookList: [CaseBook] = []
         for i in 0..<21 {
-            caseBookList.append(CaseBook(id: i + 1, url: "https://oss-materials.ifable.cn/conan/m\(i + 1).jpg?imageView2/0/interlace/1", urlh: "https://oss-materials.ifable.cn/conan/m\(i == 20 ? 1 : i + 1)h.jpg?imageView2/0/interlace/1", logo: "https://oss-materials.ifable.cn/conan/m\(i + 1)logo.png", year: 1997 + i, waiting: 1997 + i > 2009))
+            caseBookList.append(CaseBook.create(index: i))
         }
         for (_, item) in caseBookList.enumerated() {
             self.caseCardViewControllers.append(CaseCardViewController(caseBook: item))

@@ -116,9 +116,9 @@ class CaseCardViewController: UIViewController {
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default))
             self.present(alert, animated: true, completion: nil)
         } else {
-            let viewController = IncidentViewController(id: self.caseBook.id)
-            viewController.view.backgroundColor = .white
-            self.navigationController?.pushViewController(viewController, animated: true)
+            let incidentViewController = IncidentViewController(id: self.caseBook.id)
+            incidentViewController.title = self.caseBook.title
+            self.present(UINavigationController(rootViewController: incidentViewController), animated: true, completion: nil)
         }
     }
 }

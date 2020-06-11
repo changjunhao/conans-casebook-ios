@@ -26,9 +26,13 @@ class IncidentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "柯南事件簿"
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = .systemBackground
+        } else {
+            self.view.backgroundColor = .white
+        }
         let backageImage = UIImageView(frame: self.view.bounds)
-        backageImage.kf.setImage(with: URL(string: "https://oss-materials.ifable.cn/conan/m\(id)-bg.jpg"))
+        backageImage.kf.setImage(with: URL(string: "https://oss-materials.ifable.cn/conan/m\(id)-bg.jpg"), options: [.processor(BlurImageProcessor(blurRadius: 5.0))])
         backageImage.contentMode = .center
         self.view.addSubview(backageImage)
         
