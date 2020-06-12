@@ -12,14 +12,6 @@ class ViewController: UIViewController, UIPageViewControllerDelegate, UIPageView
     
     var currentIndex: Int = 0
     var caseCardViewControllers: [UIViewController] = []
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

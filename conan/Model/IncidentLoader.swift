@@ -9,8 +9,16 @@
 import Alamofire
 import SwiftyJSON
 
+protocol IncidentLoaderDelegate {
+    func successLoader(incident: Incident)
+    func failureLoader(failure : Error)
+}
+
 class IncidentLoader {
-    func loadListData(id: Int, finishBlock: @escaping (_ succcess: Bool, _ result: Incident?) -> Void) {
+    
+    var delegate: IncidentLoaderDelegate?
+    
+    func loadListData(id: Int) {
         let parameters = ["id": id]
         AF.request("https://conan.ifable.cn/api/getIncident", parameters: parameters)
             .validate()
@@ -19,12 +27,10 @@ class IncidentLoader {
                 switch response.result {
                 case .success:
                     if let data = response.value {
-                        finishBlock(true, Incident(jsonData: JSON(data)))
-                    } else {
-                        finishBlock(false, nil)
+                        self.delegate?.successLoader(incident: Incident(jsonData: JSON(data)))
                     }
-                case .failure(_):
-                    finishBlock(false, nil)
+                case let .failure(error):
+                    self.delegate?.failureLoader(failure: error)
                 }
         }
     }

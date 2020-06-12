@@ -10,9 +10,9 @@ import Foundation
 import SwiftyJSON
 
 struct IncidentSectionItem {
-    var title: String?
-    var desc: String?
-    var image: String?
+    var title: String
+    var desc: String
+    var image: String
     
     init(jsonData: JSON) {
         title = jsonData["title"].stringValue
@@ -22,14 +22,14 @@ struct IncidentSectionItem {
 }
 
 class Incident {
-    var title: String?
-    var section: [IncidentSectionItem]?
+    var title: String
+    var section: [IncidentSectionItem]
     
     init(jsonData: JSON) {
         title = jsonData["title"].stringValue
         section = [IncidentSectionItem]()
         for i in 0..<jsonData["section"].count {
-            section?.append(IncidentSectionItem(jsonData: jsonData["section"][i]))
+            section.append(IncidentSectionItem(jsonData: jsonData["section"][i]))
         }
     }
 }
