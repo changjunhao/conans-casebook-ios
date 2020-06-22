@@ -19,6 +19,7 @@
 		90CF658C24835740003EF768 /* IncidentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CF658B24835740003EF768 /* IncidentViewController.swift */; };
 		90CF658E24837E79003EF768 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CF658D24837E79003EF768 /* AudioPlayer.swift */; };
 		90CF65912483ECDB003EF768 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CF65902483ECDB003EF768 /* AudioPlayerViewController.swift */; };
+		90D7D11324A0946D00795334 /* noticeCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7D11224A0946D00795334 /* noticeCollectionReusableView.swift */; };
 		90EED4612477D07D0068834D /* CaseCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EED4602477D07D0068834D /* CaseCardViewController.swift */; };
 		90EED4642477D11B0068834D /* CaseBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EED4632477D11B0068834D /* CaseBook.swift */; };
 		EC9F7E1AB4B9EAC4875B3099 /* Pods_conan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 068922B7A6B71083BA92B413 /* Pods_conan.framework */; };
@@ -41,6 +42,7 @@
 		90CF658B24835740003EF768 /* IncidentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentViewController.swift; sourceTree = "<group>"; };
 		90CF658D24837E79003EF768 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		90CF65902483ECDB003EF768 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
+		90D7D11224A0946D00795334 /* noticeCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noticeCollectionReusableView.swift; sourceTree = "<group>"; };
 		90EED4602477D07D0068834D /* CaseCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseCardViewController.swift; sourceTree = "<group>"; };
 		90EED4632477D11B0068834D /* CaseBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseBook.swift; sourceTree = "<group>"; };
 		EC5F4ECC3F6A7D3A6B2BC6E5 /* Pods-conan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conan.debug.xcconfig"; path = "Target Support Files/Pods-conan/Pods-conan.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				90CF658F2483ECB0003EF768 /* AudioPlayer */,
 				903EFCFB247A1BB000EAADAC /* TriangleView.swift */,
 				904EEAC3249384B7003437CC /* IncidentItem.swift */,
+				90D7D11224A0946D00795334 /* noticeCollectionReusableView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				90CF658E24837E79003EF768 /* AudioPlayer.swift in Sources */,
 				90EED4642477D11B0068834D /* CaseBook.swift in Sources */,
 				90AC714224927572009B374A /* IncidentLoader.swift in Sources */,
+				90D7D11324A0946D00795334 /* noticeCollectionReusableView.swift in Sources */,
 				9004CE422472832C0015D21B /* ViewController.swift in Sources */,
 				903EFCFC247A1BB000EAADAC /* TriangleView.swift in Sources */,
 				9004CE3E2472832C0015D21B /* AppDelegate.swift in Sources */,

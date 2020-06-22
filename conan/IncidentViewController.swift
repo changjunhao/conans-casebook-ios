@@ -10,12 +10,11 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class IncidentViewController: UIViewController, IncidentLoaderDelegate {
+class IncidentViewController: UIViewController, IncidentLoaderDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var id: Int
     var incident: Incident?
-    var scrollView: UIScrollView?
-    var stackView: UIStackView?
+    var collectionView: UICollectionView?
     
     init(id: Int) {
         self.id = id
@@ -57,52 +56,79 @@ class IncidentViewController: UIViewController, IncidentLoaderDelegate {
             make.centerX.equalToSuperview()
         }
         
-        scrollView = UIScrollView()
-        scrollView!.isUserInteractionEnabled = true
-        self.view.addSubview(scrollView!)
-        scrollView!.snp.makeConstraints {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 40
+        layout.itemSize = CGSize(width: self.view.frame.width, height: 0)
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 0), collectionViewLayout: layout)
+        collectionView?.backgroundColor = .clear
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        
+        collectionView?.register(IncidentItem.self, forCellWithReuseIdentifier: "itemId")
+        //注册header
+        collectionView?.register(noticeCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "notice-image")
+                
+        
+        self.view.addSubview(collectionView!)
+        collectionView!.snp.makeConstraints {
             make in
             make.width.equalToSuperview()
-            make.top.equalTo(audioPlayerController.view.snp.bottom)
+            make.top.equalTo(audioPlayerController.view.snp.bottom).offset(20)
             make.bottom.equalToSuperview()
         }
         
-        let noticeImage = UIImageView()
-        noticeImage.kf.setImage(with: URL(string: "https://oss-materials.ifable.cn/conan/m\(id)-pic-2.png"))
-        scrollView!.addSubview(noticeImage)
-        noticeImage.snp.makeConstraints {
-            make in
-            make.width.equalTo(self.view.bounds.size.width * 0.9)
-            make.height.equalTo(self.view.bounds.size.width * 0.9 * 0.64)
-            make.centerX.equalToSuperview()
-        }
-        
-        stackView = UIStackView()
-        stackView!.spacing = 10
-        stackView!.axis = .vertical
-        stackView!.distribution = .fillEqually
-        stackView!.alignment = .center
-        self.scrollView!.addSubview(stackView!)
-        stackView!.snp.makeConstraints {
-            make in
-            make.width.equalTo(self.view.bounds.size.width)
-            make.height.equalTo(3410)
-            make.top.equalTo(noticeImage.snp.bottom)
-        }
     }
     
     func successLoader(incident: Incident) {
         self.incident = incident
-        self.scrollView?.contentSize = CGSize(width: self.view.bounds.size.width, height: 3410)
-        for (_, item) in self.incident!.section.enumerated() {
-            let incidentItemView = IncidentItem(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 300))
-            incidentItemView.item = item
-            stackView!.addArrangedSubview(incidentItemView)
-        }
+        collectionView?.reloadData()
     }
     
     func failureLoader(failure: Error) {
         print(failure)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let count = self.incident?.section.count {
+            return count
+        }
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: IncidentItem = collectionView.dequeueReusableCell(withReuseIdentifier: "itemId", for: indexPath) as! IncidentItem
+        
+        cell.item = self.incident?.section[indexPath.row]
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let font = UIFont.systemFont(ofSize: 15)
+        //通过富文本来设置行间距
+        let paraph = NSMutableParagraphStyle()
+        //将行间距设置为28
+        paraph.lineSpacing = 5
+        let rect = NSString(string: (self.incident?.section[indexPath.row].desc)!).boundingRect(with: CGSize(width: self.view.frame.width * 0.9 - 20, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.paragraphStyle: paraph], context: nil)
+        
+        return CGSize(width: self.view.frame.width, height: 46 + self.view.frame.width * 0.54 + rect.height )
+    }
+    
+    //设置HeadView的宽高
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
+        return CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.width * 0.9 * 0.64)
+    }
+    
+    //返回自定义HeadView
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        var v = noticeCollectionReusableView()
+        if kind == UICollectionView.elementKindSectionHeader {
+            v = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "notice-image", for: indexPath) as! noticeCollectionReusableView
+            v.noticeImageUrl = "https://oss-materials.ifable.cn/conan/m\(id)-pic-2.png"
+        }
+        return v
     }
 
 }

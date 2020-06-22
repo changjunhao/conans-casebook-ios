@@ -19,6 +19,12 @@ struct IncidentSectionItem {
         desc = jsonData["desc"].stringValue
         image = jsonData["image"].stringValue
     }
+    
+    init(title: String, desc: String, image: String) {
+        self.title = title
+        self.desc = desc
+        self.image = image
+    }
 }
 
 class Incident {
