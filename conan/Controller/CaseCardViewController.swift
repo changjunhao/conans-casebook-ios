@@ -92,7 +92,7 @@ class CaseCardViewController: UIViewController {
     }
 
     @objc private func handleRotate() {
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.transition(with: cardView, duration: 0.5, options: .transitionFlipFromLeft, animations: {
             if self.select {
                 self.select = false
                 self.imageView.kf.setImage(with: URL(string: self.caseBook.url))
@@ -106,8 +106,7 @@ class CaseCardViewController: UIViewController {
                     self.logoImageView.kf.setImage(with: URL(string: "https://oss-materials.ifable.cn/conan/mov-d.png"))
                 }
             }
-            UIView.setAnimationTransition(.flipFromLeft, for: self.cardView, cache: true)
-        })
+        }, completion: nil)
     }
     
     @objc func handleNavigate() {

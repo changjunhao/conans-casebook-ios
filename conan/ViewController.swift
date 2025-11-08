@@ -25,7 +25,7 @@ class ViewController: UIViewController, UIPageViewControllerDelegate, UIPageView
         super.viewDidLoad()
         
         let backageImage = UIImageView(frame: self.view.bounds)
-        backageImage.image = R.image.bgImage()
+        backageImage.image = UIImage(named: "bgImage")
         backageImage.contentMode = .center
         self.view.addSubview(backageImage)
         

@@ -8,7 +8,6 @@
 
 import UIKit
 import Kingfisher
-import Rswift
 
 class noticeCollectionReusableView: UICollectionReusableView {
     var noticeImageUrl: String? {
@@ -23,7 +22,9 @@ class noticeCollectionReusableView: UICollectionReusableView {
     func initView(){
         if noticeImageUrl != nil {
             let noticeImage = UIImageView()
-            noticeImage.kf.setImage(with: URL(string: noticeImageUrl!), placeholder: R.image.caseIcon())
+            // 使用 UIImage(named:) 直接加载图片
+            let placeholderImage = UIImage(named: "caseIcon") ?? UIImage()
+            noticeImage.kf.setImage(with: URL(string: noticeImageUrl!), placeholder: placeholderImage)
             self.addSubview(noticeImage)
             noticeImage.snp.makeConstraints {
                 make in

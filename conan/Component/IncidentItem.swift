@@ -83,11 +83,13 @@ class IncidentItem: UICollectionViewCell {
     
     func setData() {
         titleLable.text = item?.title
-        imageView.kf.setImage(with: URL(string: item!.image), placeholder: R.image.caseIcon())
+        // 使用 UIImage(named:) 直接加载图片
+        let placeholderImage = UIImage(named: "caseIcon") ?? UIImage()
+        imageView.kf.setImage(with: URL(string: item!.image), placeholder: placeholderImage)
         descLabel.text = item?.desc
         //通过富文本来设置行间距
         let paraph = NSMutableParagraphStyle()
-        //将行间距设置为28
+        //将行间距设置为5
         paraph.lineSpacing = 5
         //样式属性集合
         let attributes = [NSAttributedString.Key.paragraphStyle: paraph]

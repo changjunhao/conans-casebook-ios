@@ -17,26 +17,44 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     
     var audioUrl: String? {
         didSet {
-            let asset: AVAsset = AVAsset(url: URL(string: audioUrl!)!)
-            audioPlayer.duration = "/ \(self.timeFilter(seconds: CMTimeGetSeconds(asset.duration)))"
-            audioItem = AVPlayerItem(asset: asset)
+            guard let audioUrl = audioUrl, let url = URL(string: audioUrl) else { return }
+            let asset = AVURLAsset(url: url)
             
-            avPlayer = AVPlayer(playerItem: audioItem)
-            avPlayer?.preventsDisplaySleepDuringVideoPlayback = true
-            avPlayer?.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), queue: DispatchQueue.main, using: { time in
-                self.audioPlayer.currentTime = self.timeFilter(seconds: CMTimeGetSeconds(time))
-                self.audioPlayer.percent = Float(CMTimeGetSeconds(time) / CMTimeGetSeconds(asset.duration))
-            })
+            // 使用新的 load(_:) API 异步加载资源
+            Task {
+                do {
+                    // 加载 duration 属性
+                    let duration = try await asset.load(.duration)
+                    let durationInSeconds = CMTimeGetSeconds(duration)
+                    
+                    await MainActor.run {
+                        self.audioPlayer.duration = "/ \(self.timeFilter(seconds: durationInSeconds))"
+                        
+                        self.audioItem = AVPlayerItem(asset: asset)
+                        self.avPlayer = AVPlayer(playerItem: self.audioItem)
+                        self.avPlayer?.preventsDisplaySleepDuringVideoPlayback = true
+                        
+                        self.avPlayer?.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), queue: .main, using: { [weak self] time in
+                            guard let self = self else { return }
+                            let currentTime = CMTimeGetSeconds(time)
+                            self.audioPlayer.currentTime = self.timeFilter(seconds: currentTime)
+                            self.audioPlayer.percent = Float(currentTime / durationInSeconds)
+                        })
+                    }
+                } catch {
+                    print("Error loading asset duration: \(error.localizedDescription)")
+                }
+            }
        }
    }
     
     var playing: Bool = false {
         didSet {
             if playing {
-                audioPlayer.playButton.image = R.image.pauseIcon()
+                audioPlayer.playButton.image = UIImage(named: "pauseIcon")
                 avPlayer?.play()
             } else {
-                audioPlayer.playButton.image = R.image.playIcon()
+                audioPlayer.playButton.image = UIImage(named: "playIcon")
                 avPlayer?.pause()
             }
         }

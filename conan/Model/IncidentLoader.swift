@@ -22,16 +22,13 @@ class IncidentLoader {
         let parameters = ["id": id]
         AF.request("https://conan.ifable.cn/api/getIncident", parameters: parameters)
             .validate()
-            .responseJSON {
-                response in
+            .responseDecodable(of: JSON.self) { response in
                 switch response.result {
-                case .success:
-                    if let data = response.value {
-                        self.delegate?.successLoader(incident: Incident(jsonData: JSON(data)))
-                    }
-                case let .failure(error):
+                case .success(let json):
+                    self.delegate?.successLoader(incident: Incident(jsonData: json))
+                case .failure(let error):
                     self.delegate?.failureLoader(failure: error)
                 }
-        }
+            }
     }
 }

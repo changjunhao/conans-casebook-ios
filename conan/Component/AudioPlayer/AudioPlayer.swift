@@ -15,6 +15,10 @@ protocol AudioPlayerDelegate {
 
 class AudioPlayer: UIView {
     
+    // 图标资源
+    private static let playIcon = UIImage(named: "playIcon")!
+    private static let pauseIcon = UIImage(named: "pauseIcon")!
+    
     var delegate: AudioPlayerDelegate?
     
     var playButton: UIImageView
@@ -42,7 +46,7 @@ class AudioPlayer: UIView {
     override init(frame: CGRect) {
         
         playButton = UIImageView()
-        playButton.image = R.image.playIcon()
+        playButton.image = .playIcon
         playButton.contentMode = .center
         
         durationLable = UILabel()

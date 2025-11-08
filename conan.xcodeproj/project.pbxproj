@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,7 +13,6 @@
 		9004CE4A247283310015D21B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9004CE48247283310015D21B /* LaunchScreen.storyboard */; };
 		903EFCFC247A1BB000EAADAC /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903EFCFB247A1BB000EAADAC /* TriangleView.swift */; };
 		904EEAC4249384B7003437CC /* IncidentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904EEAC3249384B7003437CC /* IncidentItem.swift */; };
-		906F80852474BB3F0040A695 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906F80842474BB3F0040A695 /* R.generated.swift */; };
 		90AC714224927572009B374A /* IncidentLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AC714124927572009B374A /* IncidentLoader.swift */; };
 		90AC714424927B57009B374A /* Incident.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AC714324927B57009B374A /* Incident.swift */; };
 		90CF658C24835740003EF768 /* IncidentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CF658B24835740003EF768 /* IncidentViewController.swift */; };
@@ -22,12 +21,13 @@
 		90D7D11324A0946D00795334 /* noticeCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7D11224A0946D00795334 /* noticeCollectionReusableView.swift */; };
 		90EED4612477D07D0068834D /* CaseCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EED4602477D07D0068834D /* CaseCardViewController.swift */; };
 		90EED4642477D11B0068834D /* CaseBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EED4632477D11B0068834D /* CaseBook.swift */; };
-		EC9F7E1AB4B9EAC4875B3099 /* Pods_conan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 068922B7A6B71083BA92B413 /* Pods_conan.framework */; };
+		90F44C652EBF3FB500A25B04 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 90F44C642EBF3FB500A25B04 /* Alamofire */; };
+		90F44C672EBF3FB900A25B04 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 90F44C662EBF3FB900A25B04 /* SnapKit */; };
+		90F44C692EBF3FC000A25B04 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 90F44C682EBF3FC000A25B04 /* Kingfisher */; };
+		90F44C6B2EBF3FC400A25B04 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 90F44C6A2EBF3FC400A25B04 /* SwiftyJSON */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		02D45B28D0C07A14B92BFD2D /* Pods-conan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conan.release.xcconfig"; path = "Target Support Files/Pods-conan/Pods-conan.release.xcconfig"; sourceTree = "<group>"; };
-		068922B7A6B71083BA92B413 /* Pods_conan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_conan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9004CE3A2472832C0015D21B /* 柯南事件簿.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "柯南事件簿.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9004CE3D2472832C0015D21B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9004CE412472832C0015D21B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,7 +36,6 @@
 		9004CE4B247283310015D21B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		903EFCFB247A1BB000EAADAC /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		904EEAC3249384B7003437CC /* IncidentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentItem.swift; sourceTree = "<group>"; };
-		906F80842474BB3F0040A695 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		90AC714124927572009B374A /* IncidentLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLoader.swift; sourceTree = "<group>"; };
 		90AC714324927B57009B374A /* Incident.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Incident.swift; sourceTree = "<group>"; };
 		90CF658B24835740003EF768 /* IncidentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentViewController.swift; sourceTree = "<group>"; };
@@ -45,45 +44,29 @@
 		90D7D11224A0946D00795334 /* noticeCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noticeCollectionReusableView.swift; sourceTree = "<group>"; };
 		90EED4602477D07D0068834D /* CaseCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseCardViewController.swift; sourceTree = "<group>"; };
 		90EED4632477D11B0068834D /* CaseBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseBook.swift; sourceTree = "<group>"; };
-		EC5F4ECC3F6A7D3A6B2BC6E5 /* Pods-conan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conan.debug.xcconfig"; path = "Target Support Files/Pods-conan/Pods-conan.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9004CE372472832C0015D21B /* Frameworks */ = {
+		90F44C622EBF3FAE00A25B04 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC9F7E1AB4B9EAC4875B3099 /* Pods_conan.framework in Frameworks */,
+				90F44C692EBF3FC000A25B04 /* Kingfisher in Frameworks */,
+				90F44C652EBF3FB500A25B04 /* Alamofire in Frameworks */,
+				90F44C6B2EBF3FC400A25B04 /* SwiftyJSON in Frameworks */,
+				90F44C672EBF3FB900A25B04 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3EF92E9FDABB36F3A511D902 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EC5F4ECC3F6A7D3A6B2BC6E5 /* Pods-conan.debug.xcconfig */,
-				02D45B28D0C07A14B92BFD2D /* Pods-conan.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		8E325EE561BEB77D28C05456 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				068922B7A6B71083BA92B413 /* Pods_conan.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		9004CE312472832C0015D21B = {
 			isa = PBXGroup;
 			children = (
 				9004CE3C2472832C0015D21B /* conan */,
+				90F44C632EBF3FB500A25B04 /* Frameworks */,
 				9004CE3B2472832C0015D21B /* Products */,
-				3EF92E9FDABB36F3A511D902 /* Pods */,
-				8E325EE561BEB77D28C05456 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,7 +84,6 @@
 				903EFCFA247A1B6A00EAADAC /* Component */,
 				903EFCF924782D8300EAADAC /* Controller */,
 				90EED4622477D0BE0068834D /* Model */,
-				906F80842474BB3F0040A695 /* R.generated.swift */,
 				9004CE3D2472832C0015D21B /* AppDelegate.swift */,
 				9004CE412472832C0015D21B /* ViewController.swift */,
 				9004CE46247283310015D21B /* Assets.xcassets */,
@@ -150,6 +132,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		90F44C632EBF3FB500A25B04 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -157,12 +146,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9004CE4E247283310015D21B /* Build configuration list for PBXNativeTarget "conan" */;
 			buildPhases = (
-				FFEAB7B27EFA98DFA8683B16 /* [CP] Check Pods Manifest.lock */,
-				903B834E2472C83900BF0F63 /* ShellScript */,
 				9004CE362472832C0015D21B /* Sources */,
-				9004CE372472832C0015D21B /* Frameworks */,
 				9004CE382472832C0015D21B /* Resources */,
-				3DB96E8166633CFDA9888FA5 /* [CP] Embed Pods Frameworks */,
+				90F44C622EBF3FAE00A25B04 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -179,8 +165,9 @@
 		9004CE322472832C0015D21B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 2610;
 				ORGANIZATIONNAME = iFable;
 				TargetAttributes = {
 					9004CE392472832C0015D21B = {
@@ -197,6 +184,12 @@
 				Base,
 			);
 			mainGroup = 9004CE312472832C0015D21B;
+			packageReferences = (
+				90F44C4E2EBF3E8F00A25B04 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				90F44C512EBF3EB400A25B04 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				90F44C542EBF3EC400A25B04 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				90F44C572EBF3ED300A25B04 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 9004CE3B2472832C0015D21B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -218,67 +211,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		3DB96E8166633CFDA9888FA5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-conan/Pods-conan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-conan/Pods-conan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-conan/Pods-conan-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		903B834E2472C83900BF0F63 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$TEMP_DIR/rswift-lastrun",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				$SRCROOT/R.generated.swift,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
-		};
-		FFEAB7B27EFA98DFA8683B16 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-conan-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		9004CE362472832C0015D21B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -287,7 +219,6 @@
 				90AC714424927B57009B374A /* Incident.swift in Sources */,
 				90EED4612477D07D0068834D /* CaseCardViewController.swift in Sources */,
 				90CF658C24835740003EF768 /* IncidentViewController.swift in Sources */,
-				906F80852474BB3F0040A695 /* R.generated.swift in Sources */,
 				90CF658E24837E79003EF768 /* AudioPlayer.swift in Sources */,
 				90EED4642477D11B0068834D /* CaseBook.swift in Sources */,
 				90AC714224927572009B374A /* IncidentLoader.swift in Sources */,
@@ -318,6 +249,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -340,6 +272,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -348,8 +281,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = QU7V9M9C3Z;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -369,6 +304,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -378,6 +314,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -400,6 +337,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -408,8 +346,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = QU7V9M9C3Z;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -422,6 +362,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -430,18 +371,21 @@
 		};
 		9004CE4F247283310015D21B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC5F4ECC3F6A7D3A6B2BC6E5 /* Pods-conan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QU7V9M9C3Z;
 				INFOPLIST_FILE = conan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.ifable.conan;
 				PRODUCT_NAME = "柯南事件簿";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -449,18 +393,21 @@
 		};
 		9004CE50247283310015D21B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02D45B28D0C07A14B92BFD2D /* Pods-conan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QU7V9M9C3Z;
 				INFOPLIST_FILE = conan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.ifable.conan;
 				PRODUCT_NAME = "柯南事件簿";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -488,6 +435,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		90F44C4E2EBF3E8F00A25B04 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+		90F44C512EBF3EB400A25B04 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		90F44C542EBF3EC400A25B04 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.6.1;
+			};
+		};
+		90F44C572EBF3ED300A25B04 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		90F44C642EBF3FB500A25B04 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 90F44C4E2EBF3E8F00A25B04 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		90F44C662EBF3FB900A25B04 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 90F44C512EBF3EB400A25B04 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		90F44C682EBF3FC000A25B04 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 90F44C542EBF3EC400A25B04 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		90F44C6A2EBF3FC400A25B04 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 90F44C572EBF3ED300A25B04 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9004CE322472832C0015D21B /* Project object */;
 }
