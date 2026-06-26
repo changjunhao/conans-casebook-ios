@@ -52,18 +52,18 @@ class AudioPlayer: UIView {
         durationLabel = UILabel()
         durationLabel.text = duration
         durationLabel.font = UIFont.systemFont(ofSize: 14)
-        durationLabel.textColor = .black
+        durationLabel.textColor = .label
         currentTimeLabel = UILabel()
         currentTimeLabel.text = currentTime
         currentTimeLabel.font = UIFont.systemFont(ofSize: 14)
-        currentTimeLabel.textColor = .black
+        currentTimeLabel.textColor = .label
 
         progressView = UIProgressView()
         progressView.progress = percent
 
         super.init(frame: frame)
 
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         self.layer.cornerRadius = 28
         self.layer.masksToBounds = true
 

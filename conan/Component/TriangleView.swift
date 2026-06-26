@@ -18,7 +18,7 @@ class TriangleView: UIView {
                 
         let label = UILabel()
         label.text = String(caseBook.year)
-        label.textColor = .black
+        label.textColor = .label
         label.font = UIFont.systemFont(ofSize: 16)
         label.baselineAdjustment = .alignCenters
         label.textAlignment = .center

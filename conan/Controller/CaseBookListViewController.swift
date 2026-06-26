@@ -23,7 +23,9 @@ class CaseBookListViewController: UIViewController, UIPageViewControllerDelegate
     var currentIndex: Int = 0 {
         didSet {
             button.setTitle(
-                caseBookList[currentIndex].waiting ? "静候上线" : "精彩呈现",
+                caseBookList[currentIndex].waiting
+                    ? String(localized: "静候上线")
+                    : String(localized: "精彩呈现"),
                 for: .normal
             )
         }
@@ -93,9 +95,9 @@ class CaseBookListViewController: UIViewController, UIPageViewControllerDelegate
     }
 
     private func setupButton() {
-        button.backgroundColor = UIColor(red: 22 / 255, green: 24 / 255, blue: 35 / 255, alpha: 1)
-        button.tintColor = UIColor(red: 233 / 255, green: 241 / 255, blue: 246 / 255, alpha: 1)
-        button.setTitle("精彩呈现", for: .normal)
+        button.backgroundColor = UIColor.secondarySystemBackground
+        button.tintColor = .label
+        button.setTitle(String(localized: "精彩呈现"), for: .normal)
         button.layer.cornerRadius = 30
         button.layer.masksToBounds = true
         self.view.addSubview(button)

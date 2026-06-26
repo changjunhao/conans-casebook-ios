@@ -11,20 +11,14 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    private var coordinator: AppCoordinator?
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        self.window = self.window ?? UIWindow()
-        let appCoordinator = AppCoordinator()
-        self.coordinator = appCoordinator
-        let rootVC = CaseBookListViewController(caseBookService: CaseBookService(), coordinator: appCoordinator)
-        self.window?.rootViewController = rootVC
-        self.window?.makeKeyAndVisible()
-        
         return true
+    }
+
+    // MARK: UISceneSession Lifecycle
+
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
 }

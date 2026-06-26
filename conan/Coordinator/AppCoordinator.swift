@@ -20,8 +20,8 @@ final class AppCoordinator {
 
     /// 弹出"静候上线"提示
     func showWaitingAlert(from presenter: UIViewController) {
-        let alert = UIAlertController(title: nil, message: "静候上线", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        let alert = UIAlertController(title: nil, message: String(localized: "静候上线"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: String(localized: "OK"), style: .default))
         presenter.present(alert, animated: true)
     }
 

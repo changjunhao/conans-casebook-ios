@@ -98,6 +98,43 @@ class IncidentViewController: UIViewController {
     private var dataSource: IncidentCollectionViewDataSource!
     private var collectionView: UICollectionView?
 
+    // 状态视图
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
+    private lazy var errorView: UIView = {
+        let container = UIView()
+        container.isHidden = true
+
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.alignment = .center
+        stack.spacing = 16
+
+        let icon = UIImageView(image: UIImage(systemName: "wifi.exclamationmark"))
+        icon.tintColor = .secondaryLabel
+        icon.contentMode = .scaleAspectFit
+        icon.snp.makeConstraints { $0.width.height.equalTo(48) }
+
+        let label = UILabel()
+        label.text = String(localized: "加载失败，请重试")
+        label.textColor = .secondaryLabel
+        label.font = .systemFont(ofSize: 15)
+
+        let retryButton = UIButton(type: .system)
+        retryButton.setTitle(String(localized: "重新加载"), for: .normal)
+        retryButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        retryButton.addTarget(self, action: #selector(retryLoad), for: .touchUpInside)
+
+        stack.addArrangedSubview(icon)
+        stack.addArrangedSubview(label)
+        stack.addArrangedSubview(retryButton)
+
+        container.addSubview(stack)
+        stack.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        return container
+    }()
+
     init(id: Int, incidentService: IncidentProviding) {
         self.incidentId = id
         self.incidentService = incidentService
@@ -115,6 +152,7 @@ class IncidentViewController: UIViewController {
         setupBackground()
         setupAudioPlayer()
         setupCollectionView()
+        setupStateViews()
         loadIncident()
     }
 
@@ -184,9 +222,44 @@ class IncidentViewController: UIViewController {
         self.collectionView = cv
     }
 
+    private func setupStateViews() {
+        activityIndicator.color = .label
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+
+        self.view.addSubview(errorView)
+        errorView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+
+    // MARK: - State Management
+
+    private func showLoading() {
+        activityIndicator.startAnimating()
+        errorView.isHidden = true
+        collectionView?.isHidden = true
+    }
+
+    private func showContent() {
+        activityIndicator.stopAnimating()
+        errorView.isHidden = true
+        collectionView?.isHidden = false
+    }
+
+    private func showError() {
+        activityIndicator.stopAnimating()
+        errorView.isHidden = false
+        collectionView?.isHidden = true
+    }
+
     // MARK: - Data Loading
 
     private func loadIncident() {
+        showLoading()
         Task { [weak self] in
             guard let self = self else { return }
             do {
@@ -194,10 +267,17 @@ class IncidentViewController: UIViewController {
                 await MainActor.run {
                     self.dataSource.update(incident: incident)
                     self.collectionView?.reloadData()
+                    self.showContent()
                 }
             } catch {
-                print("加载案件详情失败: \(error.localizedDescription)")
+                await MainActor.run {
+                    self.showError()
+                }
             }
         }
+    }
+
+    @objc private func retryLoad() {
+        loadIncident()
     }
 }

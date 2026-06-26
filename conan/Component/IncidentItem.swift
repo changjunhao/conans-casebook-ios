@@ -24,8 +24,8 @@ class IncidentItem: UICollectionViewCell {
     
     override init(frame: CGRect) {
         titleLabel = UILabel()
-        titleLabel.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.9)
-        titleLabel.textColor = UIColor(red: 0.05, green: 0.62, blue: 0.64, alpha: 1.00)
+        titleLabel.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.9)
+        titleLabel.textColor = .label
         titleLabel.font = .systemFont(ofSize: 16)
         titleLabel.textAlignment = .center
         

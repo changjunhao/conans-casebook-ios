@@ -9,13 +9,13 @@
 import Foundation
 
 struct CaseBook {
-    var id: Int
-    var title: String
-    var url: String
-    var urlh: String
-    var logo: String
-    var year: Int
-    var waiting: Bool
+    let id: Int
+    let title: String
+    let url: String
+    let urlh: String
+    let logo: String
+    let year: Int
+    let waiting: Bool
 }
 
 extension CaseBook {
