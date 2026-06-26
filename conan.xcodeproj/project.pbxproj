@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9004CE3E2472832C0015D21B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9004CE3D2472832C0015D21B /* AppDelegate.swift */; };
-		9004CE422472832C0015D21B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9004CE412472832C0015D21B /* ViewController.swift */; };
 		9004CE47247283310015D21B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9004CE46247283310015D21B /* Assets.xcassets */; };
 		9004CE4A247283310015D21B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9004CE48247283310015D21B /* LaunchScreen.storyboard */; };
 		903EFCFC247A1BB000EAADAC /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903EFCFB247A1BB000EAADAC /* TriangleView.swift */; };
@@ -18,19 +17,23 @@
 		90CF658C24835740003EF768 /* IncidentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CF658B24835740003EF768 /* IncidentViewController.swift */; };
 		90CF658E24837E79003EF768 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CF658D24837E79003EF768 /* AudioPlayer.swift */; };
 		90CF65912483ECDB003EF768 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CF65902483ECDB003EF768 /* AudioPlayerViewController.swift */; };
-		90D7D11324A0946D00795334 /* noticeCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7D11224A0946D00795334 /* noticeCollectionReusableView.swift */; };
+		90D7D11324A0946D00795334 /* NoticeCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7D11224A0946D00795334 /* NoticeCollectionReusableView.swift */; };
 		90EED4612477D07D0068834D /* CaseCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EED4602477D07D0068834D /* CaseCardViewController.swift */; };
 		90EED4642477D11B0068834D /* CaseBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EED4632477D11B0068834D /* CaseBook.swift */; };
-		90F44C652EBF3FB500A25B04 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 90F44C642EBF3FB500A25B04 /* Alamofire */; };
 		90F44C672EBF3FB900A25B04 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 90F44C662EBF3FB900A25B04 /* SnapKit */; };
 		90F44C692EBF3FC000A25B04 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 90F44C682EBF3FC000A25B04 /* Kingfisher */; };
-		90F44C6B2EBF3FC400A25B04 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 90F44C6A2EBF3FC400A25B04 /* SwiftyJSON */; };
+		A1B2C3D40001000000000001 /* CaseBookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40002000000000001 /* CaseBookService.swift */; };
+		A1B2C3D40001000000000002 /* IncidentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40002000000000002 /* IncidentService.swift */; };
+		A1B2C3D40001000000000003 /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40002000000000003 /* APIConfiguration.swift */; };
+		A1B2C3D40001000000000004 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40002000000000004 /* AppCoordinator.swift */; };
+		A1B2C3D40001000000000005 /* ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40002000000000005 /* ReuseIdentifier.swift */; };
+		A1B2C3D40001000000000006 /* CaseBookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40002000000000006 /* CaseBookListViewController.swift */; };
+		A1B2C3D40001000000000007 /* CardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40002000000000007 /* CardLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9004CE3A2472832C0015D21B /* 柯南事件簿.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "柯南事件簿.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9004CE3D2472832C0015D21B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9004CE412472832C0015D21B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9004CE46247283310015D21B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9004CE49247283310015D21B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9004CE4B247283310015D21B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,9 +44,16 @@
 		90CF658B24835740003EF768 /* IncidentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentViewController.swift; sourceTree = "<group>"; };
 		90CF658D24837E79003EF768 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		90CF65902483ECDB003EF768 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
-		90D7D11224A0946D00795334 /* noticeCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noticeCollectionReusableView.swift; sourceTree = "<group>"; };
+		90D7D11224A0946D00795334 /* NoticeCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCollectionReusableView.swift; sourceTree = "<group>"; };
 		90EED4602477D07D0068834D /* CaseCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseCardViewController.swift; sourceTree = "<group>"; };
 		90EED4632477D11B0068834D /* CaseBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseBook.swift; sourceTree = "<group>"; };
+		A1B2C3D40002000000000001 /* CaseBookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseBookService.swift; sourceTree = "<group>"; };
+		A1B2C3D40002000000000002 /* IncidentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentService.swift; sourceTree = "<group>"; };
+		A1B2C3D40002000000000003 /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
+		A1B2C3D40002000000000004 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		A1B2C3D40002000000000005 /* ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifier.swift; sourceTree = "<group>"; };
+		A1B2C3D40002000000000006 /* CaseBookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseBookListViewController.swift; sourceTree = "<group>"; };
+		A1B2C3D40002000000000007 /* CardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +62,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				90F44C692EBF3FC000A25B04 /* Kingfisher in Frameworks */,
-				90F44C652EBF3FB500A25B04 /* Alamofire in Frameworks */,
-				90F44C6B2EBF3FC400A25B04 /* SwiftyJSON in Frameworks */,
 				90F44C672EBF3FB900A25B04 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,12 +92,12 @@
 				903EFCFA247A1B6A00EAADAC /* Component */,
 				903EFCF924782D8300EAADAC /* Controller */,
 				90EED4622477D0BE0068834D /* Model */,
+				A1B2C3D40003000000000001 /* Service */,
+				A1B2C3D40003000000000002 /* Coordinator */,
 				9004CE3D2472832C0015D21B /* AppDelegate.swift */,
-				9004CE412472832C0015D21B /* ViewController.swift */,
 				9004CE46247283310015D21B /* Assets.xcassets */,
 				9004CE48247283310015D21B /* LaunchScreen.storyboard */,
 				9004CE4B247283310015D21B /* Info.plist */,
-				90CF658B24835740003EF768 /* IncidentViewController.swift */,
 			);
 			path = conan;
 			sourceTree = "<group>";
@@ -97,7 +105,9 @@
 		903EFCF924782D8300EAADAC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A1B2C3D40002000000000006 /* CaseBookListViewController.swift */,
 				90EED4602477D07D0068834D /* CaseCardViewController.swift */,
+				90CF658B24835740003EF768 /* IncidentViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -108,7 +118,9 @@
 				90CF658F2483ECB0003EF768 /* AudioPlayer */,
 				903EFCFB247A1BB000EAADAC /* TriangleView.swift */,
 				904EEAC3249384B7003437CC /* IncidentItem.swift */,
-				90D7D11224A0946D00795334 /* noticeCollectionReusableView.swift */,
+				90D7D11224A0946D00795334 /* NoticeCollectionReusableView.swift */,
+				A1B2C3D40002000000000005 /* ReuseIdentifier.swift */,
+				A1B2C3D40002000000000007 /* CardLayout.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -137,6 +149,24 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40003000000000001 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D40002000000000001 /* CaseBookService.swift */,
+				A1B2C3D40002000000000002 /* IncidentService.swift */,
+				A1B2C3D40002000000000003 /* APIConfiguration.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40003000000000002 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D40002000000000004 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,10 +215,8 @@
 			);
 			mainGroup = 9004CE312472832C0015D21B;
 			packageReferences = (
-				90F44C4E2EBF3E8F00A25B04 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				90F44C512EBF3EB400A25B04 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				90F44C542EBF3EC400A25B04 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				90F44C572EBF3ED300A25B04 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 9004CE3B2472832C0015D21B /* Products */;
 			projectDirPath = "";
@@ -222,8 +250,14 @@
 				90CF658E24837E79003EF768 /* AudioPlayer.swift in Sources */,
 				90EED4642477D11B0068834D /* CaseBook.swift in Sources */,
 				90AC714224927572009B374A /* IncidentLoader.swift in Sources */,
-				90D7D11324A0946D00795334 /* noticeCollectionReusableView.swift in Sources */,
-				9004CE422472832C0015D21B /* ViewController.swift in Sources */,
+				90D7D11324A0946D00795334 /* NoticeCollectionReusableView.swift in Sources */,
+				A1B2C3D40001000000000006 /* CaseBookListViewController.swift in Sources */,
+				A1B2C3D40001000000000001 /* CaseBookService.swift in Sources */,
+				A1B2C3D40001000000000002 /* IncidentService.swift in Sources */,
+				A1B2C3D40001000000000003 /* APIConfiguration.swift in Sources */,
+				A1B2C3D40001000000000004 /* AppCoordinator.swift in Sources */,
+				A1B2C3D40001000000000005 /* ReuseIdentifier.swift in Sources */,
+				A1B2C3D40001000000000007 /* CardLayout.swift in Sources */,
 				903EFCFC247A1BB000EAADAC /* TriangleView.swift in Sources */,
 				9004CE3E2472832C0015D21B /* AppDelegate.swift in Sources */,
 				904EEAC4249384B7003437CC /* IncidentItem.swift in Sources */,
@@ -299,7 +333,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -358,7 +392,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -437,14 +471,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		90F44C4E2EBF3E8F00A25B04 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.10.2;
-			};
-		};
 		90F44C512EBF3EB400A25B04 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -461,22 +487,9 @@
 				minimumVersion = 8.6.1;
 			};
 		};
-		90F44C572EBF3ED300A25B04 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.2;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		90F44C642EBF3FB500A25B04 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 90F44C4E2EBF3E8F00A25B04 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
 		90F44C662EBF3FB900A25B04 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 90F44C512EBF3EB400A25B04 /* XCRemoteSwiftPackageReference "SnapKit" */;
@@ -486,11 +499,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 90F44C542EBF3EC400A25B04 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		90F44C6A2EBF3FC400A25B04 /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 90F44C572EBF3ED300A25B04 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

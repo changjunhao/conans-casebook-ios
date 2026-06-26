@@ -14,7 +14,7 @@ class TriangleView: UIView {
     init(caseBook: CaseBook) {
         super.init(frame: CGRect(x: 0, y: 0, width: 56, height: 56))
 
-        self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        self.backgroundColor = .clear
                 
         let label = UILabel()
         label.text = String(caseBook.year)
@@ -38,7 +38,7 @@ class TriangleView: UIView {
     }
 
     override func draw(_ rect: CGRect) {
-        let context: CGContext = UIGraphicsGetCurrentContext()!
+        guard let context = UIGraphicsGetCurrentContext() else { return }
         context.setAllowsAntialiasing(true) //抗锯齿设置
         context.setFillColor(UIColor(red: 1, green: 0.8, blue: 0.18, alpha: 1).cgColor)
         let p1: CGMutablePath = CGMutablePath()

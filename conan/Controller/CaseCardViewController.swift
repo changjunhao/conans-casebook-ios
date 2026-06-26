@@ -11,46 +11,49 @@ import Kingfisher
 import SnapKit
 
 class CaseCardViewController: UIViewController {
-    
-    private var caseBook: CaseBook!
+
+    private let caseBook: CaseBook
     private var cardView: UIView
     private var imageView: UIImageView
     private var logoImageView: UIImageView
-    private var select: Bool = false
-    
+    private var isFlipped: Bool = false
+
+    /// 由外部注入的导航回调，替代内联的导航逻辑
+    var onNavigate: (() -> Void)?
+
     init(caseBook: CaseBook) {
         cardView = UIView()
         // 阴影颜色
         cardView.layer.shadowColor = UIColor.black.cgColor
         // 阴影偏移，默认(0, -3)
-        cardView.layer.shadowOffset = CGSize(width: 0,height: 2)
+        cardView.layer.shadowOffset = CGSize(width: 0, height: 2)
         // 阴影透明度，默认0
         cardView.layer.shadowOpacity = 0.6
         // 阴影半径，默认3
         cardView.layer.shadowRadius = 14
-        
+
         imageView = UIImageView()
-//        imageView.layer.cornerRadius = 10
-//        imageView.layer.masksToBounds = true
         logoImageView = UIImageView()
-        
-        super.init(nibName: nil, bundle: nil)
+
         self.caseBook = caseBook
-        
+        super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        let cardWidth = self.view.bounds.size.width * CardLayout.widthRatio
+        let cardHeight = cardWidth * CardLayout.aspectRatio
+
         self.view.addSubview(cardView)
         cardView.snp.makeConstraints {
             make in
-            make.width.equalTo(self.view.bounds.size.width * 0.8)
-            make.height.equalTo(self.view.bounds.size.width * 0.8 * 7 / 5)
+            make.width.equalTo(cardWidth)
+            make.height.equalTo(cardHeight)
             make.center.equalTo(self.view)
         }
         cardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRotate)))
@@ -64,21 +67,25 @@ class CaseCardViewController: UIViewController {
         }
         imageView.kf.setImage(with: URL(string: self.caseBook.url))
         let caShapeLayer = CAShapeLayer()
-        caShapeLayer.path = UIBezierPath.init(roundedRect: CGRect(x: 0, y: 0, width: self.view.bounds.size.width * 0.8, height: self.view.bounds.size.width * 0.8 * 7 / 5), byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 10, height: 10)).cgPath
+        caShapeLayer.path = UIBezierPath(
+            roundedRect: CGRect(x: 0, y: 0, width: cardWidth, height: cardHeight),
+            byRoundingCorners: .allCorners,
+            cornerRadii: CGSize(width: CardLayout.cornerRadius, height: CardLayout.cornerRadius)
+        ).cgPath
         imageView.layer.mask = caShapeLayer
-        
+
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width * 0.8, height: self.view.bounds.size.width * 0.8 * 7 / 5)
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: cardWidth, height: cardHeight)
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
         gradientLayer.colors = [UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor, UIColor(red: 0, green: 0, blue: 0, alpha: 0.8).cgColor]
         imageView.layer.addSublayer(gradientLayer)
-        
+
         cardView.addSubview(logoImageView)
         logoImageView.snp.makeConstraints {
             make in
-            make.width.equalTo(self.view.bounds.size.width * 0.72)
-            make.height.equalTo(52)
+            make.width.equalTo(self.view.bounds.size.width * CardLayout.logoWidthRatio)
+            make.height.equalTo(CardLayout.logoHeight)
             make.bottom.equalTo(-20)
             make.centerX.equalTo(cardView)
         }
@@ -86,38 +93,29 @@ class CaseCardViewController: UIViewController {
         logoImageView.isUserInteractionEnabled = true
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleNavigate))
         logoImageView.addGestureRecognizer(tapGestureRecognizer)
-        
+
         let triangleView = TriangleView(caseBook: self.caseBook)
         imageView.addSubview(triangleView)
     }
 
     @objc private func handleRotate() {
         UIView.transition(with: cardView, duration: 0.5, options: .transitionFlipFromLeft, animations: {
-            if self.select {
-                self.select = false
+            if self.isFlipped {
+                self.isFlipped = false
                 self.imageView.kf.setImage(with: URL(string: self.caseBook.url))
                 self.logoImageView.kf.setImage(with: URL(string: self.caseBook.logo))
             } else {
-                self.select = true
+                self.isFlipped = true
                 self.imageView.kf.setImage(with: URL(string: self.caseBook.urlh))
-                if self.caseBook.waiting {
-                    self.logoImageView.kf.setImage(with: URL(string: "https://oss-materials.ifable.cn/conan/mov-e.png"))
-                } else {
-                    self.logoImageView.kf.setImage(with: URL(string: "https://oss-materials.ifable.cn/conan/mov-d.png"))
-                }
+                let flippedLogoUrl = self.caseBook.waiting
+                    ? APIConfiguration.waitingLogo
+                    : APIConfiguration.availableLogo
+                self.logoImageView.kf.setImage(with: URL(string: flippedLogoUrl))
             }
         }, completion: nil)
     }
-    
-    @objc func handleNavigate() {
-        if self.caseBook.waiting {
-            let alert = UIAlertController(title: nil, message: "静候上线", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default))
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            let incidentViewController = IncidentViewController(id: self.caseBook.id)
-            incidentViewController.title = self.caseBook.title
-            self.present(UINavigationController(rootViewController: incidentViewController), animated: true, completion: nil)
-        }
+
+    @objc private func handleNavigate() {
+        onNavigate?()
     }
 }

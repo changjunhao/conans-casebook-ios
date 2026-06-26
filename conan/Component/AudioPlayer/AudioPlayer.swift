@@ -9,31 +9,31 @@
 import UIKit
 import SnapKit
 
-protocol AudioPlayerDelegate {
-    func play()
+protocol AudioPlayerViewDelegate: AnyObject {
+    func audioPlayerDidRequestTogglePlayback()
 }
 
 class AudioPlayer: UIView {
-    
+
     // 图标资源
-    private static let playIcon = UIImage(named: "playIcon")!
-    private static let pauseIcon = UIImage(named: "pauseIcon")!
-    
-    var delegate: AudioPlayerDelegate?
-    
+    private static let playIcon = UIImage(named: "playIcon") ?? UIImage()
+    private static let pauseIcon = UIImage(named: "pauseIcon") ?? UIImage()
+
+    weak var delegate: AudioPlayerViewDelegate?
+
     var playButton: UIImageView
-    var durationLable: UILabel
-    var currentTimeLable: UILabel
+    var durationLabel: UILabel
+    var currentTimeLabel: UILabel
     var progressView: UIProgressView
-    
+
     var duration: String = "/ 0:00" {
         didSet {
-            self.durationLable.text = duration
+            self.durationLabel.text = duration
         }
     }
     var currentTime: String = "0:00" {
         didSet {
-            self.currentTimeLable.text = currentTime
+            self.currentTimeLabel.text = currentTime
         }
     }
     var percent: Float = 0.0 {
@@ -41,32 +41,32 @@ class AudioPlayer: UIView {
             self.progressView.progress = percent
         }
     }
-    
-    
+
+
     override init(frame: CGRect) {
-        
+
         playButton = UIImageView()
         playButton.image = .playIcon
         playButton.contentMode = .center
-        
-        durationLable = UILabel()
-        durationLable.text = duration
-        durationLable.font = UIFont.systemFont(ofSize: 14)
-        durationLable.textColor = .black
-        currentTimeLable = UILabel()
-        currentTimeLable.text = currentTime
-        currentTimeLable.font = UIFont.systemFont(ofSize: 14)
-        currentTimeLable.textColor = .black
-        
+
+        durationLabel = UILabel()
+        durationLabel.text = duration
+        durationLabel.font = UIFont.systemFont(ofSize: 14)
+        durationLabel.textColor = .black
+        currentTimeLabel = UILabel()
+        currentTimeLabel.text = currentTime
+        currentTimeLabel.font = UIFont.systemFont(ofSize: 14)
+        currentTimeLabel.textColor = .black
+
         progressView = UIProgressView()
         progressView.progress = percent
-        
+
         super.init(frame: frame)
-        
+
         self.backgroundColor = .white
         self.layer.cornerRadius = 28
         self.layer.masksToBounds = true
-        
+
         self.addSubview(playButton)
         playButton.snp.makeConstraints{
             make in
@@ -77,35 +77,35 @@ class AudioPlayer: UIView {
         }
         playButton.isUserInteractionEnabled = true
         playButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handlePlay)))
-        
-        self.addSubview(currentTimeLable)
-        currentTimeLable.snp.makeConstraints {
+
+        self.addSubview(currentTimeLabel)
+        currentTimeLabel.snp.makeConstraints {
             make in
             make.width.equalTo(32)
             make.centerY.equalToSuperview()
             make.left.equalTo(playButton.snp.right)
         }
-        self.addSubview(durationLable)
-        durationLable.snp.makeConstraints {
+        self.addSubview(durationLabel)
+        durationLabel.snp.makeConstraints {
             make in
             make.width.equalTo(40)
             make.centerY.equalToSuperview()
-            make.left.equalTo(currentTimeLable.snp.right)
+            make.left.equalTo(currentTimeLabel.snp.right)
         }
         self.addSubview(progressView)
         progressView.snp.makeConstraints {
             make in
-            make.left.equalTo(durationLable.snp.right).offset(5)
+            make.left.equalTo(durationLabel.snp.right).offset(5)
             make.right.equalTo(-20)
             make.centerY.equalToSuperview()
         }
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     @objc func handlePlay() {
-        self.delegate?.play()
+        self.delegate?.audioPlayerDidRequestTogglePlayback()
     }
 }

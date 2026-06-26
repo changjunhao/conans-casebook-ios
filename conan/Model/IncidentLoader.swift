@@ -6,29 +6,14 @@
 //  Copyright © 2020 iFable. All rights reserved.
 //
 
-import Alamofire
-import SwiftyJSON
+import Foundation
 
-protocol IncidentLoaderDelegate {
-    func successLoader(incident: Incident)
-    func failureLoader(failure : Error)
-}
-
-class IncidentLoader {
-    
-    var delegate: IncidentLoaderDelegate?
-    
-    func loadListData(id: Int) {
-        let parameters = ["id": id]
-        AF.request("https://conan.ifable.cn/api/getIncident", parameters: parameters)
-            .validate()
-            .responseDecodable(of: JSON.self) { response in
-                switch response.result {
-                case .success(let json):
-                    self.delegate?.successLoader(incident: Incident(jsonData: json))
-                case .failure(let error):
-                    self.delegate?.failureLoader(failure: error)
-                }
-            }
+struct IncidentLoader {
+    func loadIncident(id: Int) async throws -> Incident {
+        guard let url = URL(string: APIConfiguration.incidentAPI(id: id)) else {
+            throw URLError(.badURL)
+        }
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return try JSONDecoder().decode(Incident.self, from: data)
     }
 }

@@ -17,17 +17,17 @@ class IncidentItem: UICollectionViewCell {
             self.setData()
         }
     }
-    var titleLable: UILabel
+    var titleLabel: UILabel
     var imageView: UIImageView
     var descLabel: UILabel
     var descView: UIView
     
     override init(frame: CGRect) {
-        titleLable = UILabel()
-        titleLable.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.9)
-        titleLable.textColor = UIColor(red: 0.05, green: 0.62, blue: 0.64, alpha: 1.00)
-        titleLable.font = .systemFont(ofSize: 16)
-        titleLable.textAlignment = .center
+        titleLabel = UILabel()
+        titleLabel.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.9)
+        titleLabel.textColor = UIColor(red: 0.05, green: 0.62, blue: 0.64, alpha: 1.00)
+        titleLabel.font = .systemFont(ofSize: 16)
+        titleLabel.textAlignment = .center
         
         imageView = UIImageView()
         
@@ -41,8 +41,8 @@ class IncidentItem: UICollectionViewCell {
         descView.addSubview(descLabel)
     
         super.init(frame: frame)
-        self.addSubview(titleLable)
-        titleLable.snp.makeConstraints {
+        self.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints {
             make in
             make.width.equalTo(frame.width * 0.9)
             make.height.equalTo(26)
@@ -50,8 +50,8 @@ class IncidentItem: UICollectionViewCell {
         }
         
         let caShapeLayer1 = CAShapeLayer()
-        caShapeLayer1.path = UIBezierPath.init(roundedRect: CGRect(x: 0, y: 0, width: frame.width * 0.9, height: 26), byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 10, height: 10)).cgPath
-        titleLable.layer.mask = caShapeLayer1
+        caShapeLayer1.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: frame.width * 0.9, height: 26), byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 10, height: 10)).cgPath
+        titleLabel.layer.mask = caShapeLayer1
         
         self.addSubview(imageView)
         imageView.snp.makeConstraints {
@@ -59,7 +59,7 @@ class IncidentItem: UICollectionViewCell {
             make.width.equalTo(frame.width * 0.9)
             make.height.equalTo(frame.width * 0.54)
             make.centerX.equalToSuperview()
-            make.top.equalTo(titleLable.snp.bottom)
+            make.top.equalTo(titleLabel.snp.bottom)
         }
         self.addSubview(descView)
         descView.snp.makeConstraints {
@@ -81,18 +81,27 @@ class IncidentItem: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.kf.cancelDownloadTask()
+        titleLabel.text = nil
+        descLabel.text = nil
+        descLabel.attributedText = nil
+    }
+    
     func setData() {
-        titleLable.text = item?.title
+        guard let item = item else { return }
+        titleLabel.text = item.title
         // 使用 UIImage(named:) 直接加载图片
         let placeholderImage = UIImage(named: "caseIcon") ?? UIImage()
-        imageView.kf.setImage(with: URL(string: item!.image), placeholder: placeholderImage)
-        descLabel.text = item?.desc
+        imageView.kf.setImage(with: URL(string: item.image), placeholder: placeholderImage)
+        descLabel.text = item.desc
         //通过富文本来设置行间距
         let paraph = NSMutableParagraphStyle()
         //将行间距设置为5
         paraph.lineSpacing = 5
         //样式属性集合
         let attributes = [NSAttributedString.Key.paragraphStyle: paraph]
-        descLabel.attributedText = NSAttributedString(string: item!.desc, attributes: attributes)
+        descLabel.attributedText = NSAttributedString(string: item.desc, attributes: attributes)
     }
 }
