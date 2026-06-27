@@ -15,12 +15,10 @@ import Kingfisher
 final class IncidentCollectionViewDataSource: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     private(set) var incident: Incident?
-    private let viewWidth: CGFloat
     private let incidentId: Int
 
-    init(incidentId: Int, viewWidth: CGFloat) {
+    init(incidentId: Int) {
         self.incidentId = incidentId
-        self.viewWidth = viewWidth
     }
 
     func update(incident: Incident) {
@@ -65,6 +63,7 @@ final class IncidentCollectionViewDataSource: NSObject, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let viewWidth = collectionView.bounds.width
         let font = UIFont.systemFont(ofSize: 15)
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineSpacing = 5
@@ -85,7 +84,8 @@ final class IncidentCollectionViewDataSource: NSObject, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: viewWidth, height: viewWidth * 0.9 * 0.64)
+        let viewWidth = collectionView.bounds.width
+        return CGSize(width: viewWidth, height: viewWidth * 0.9 * 0.64)
     }
 }
 
@@ -97,6 +97,7 @@ class IncidentViewController: UIViewController {
     private let incidentService: IncidentProviding
     private var dataSource: IncidentCollectionViewDataSource!
     private var collectionView: UICollectionView?
+    private var loadTask: Task<Void, Never>?
 
     // 状态视图
     private let activityIndicator = UIActivityIndicatorView(style: .large)
@@ -188,18 +189,14 @@ class IncidentViewController: UIViewController {
     }
 
     private func setupCollectionView() {
-        dataSource = IncidentCollectionViewDataSource(
-            incidentId: incidentId,
-            viewWidth: self.view.frame.width
-        )
+        dataSource = IncidentCollectionViewDataSource(incidentId: incidentId)
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 40
-        layout.itemSize = CGSize(width: self.view.frame.width, height: 0)
 
         let cv = UICollectionView(
-            frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 0),
+            frame: .zero,
             collectionViewLayout: layout
         )
         cv.backgroundColor = .clear
@@ -232,7 +229,8 @@ class IncidentViewController: UIViewController {
 
         self.view.addSubview(errorView)
         errorView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(collectionView!.snp.top)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
 
@@ -260,21 +258,32 @@ class IncidentViewController: UIViewController {
 
     private func loadIncident() {
         showLoading()
-        Task { [weak self] in
+        loadTask?.cancel()
+        loadTask = Task { [weak self] in
             guard let self = self else { return }
             do {
                 let incident = try await self.incidentService.loadIncident(id: self.incidentId)
+                try Task.checkCancellation()
                 await MainActor.run {
                     self.dataSource.update(incident: incident)
                     self.collectionView?.reloadData()
+                    self.collectionView?.collectionViewLayout.invalidateLayout()
                     self.showContent()
                 }
+            } catch is CancellationError {
+                // 任务已取消，忽略
             } catch {
                 await MainActor.run {
                     self.showError()
                 }
             }
         }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        loadTask?.cancel()
+        loadTask = nil
     }
 
     @objc private func retryLoad() {

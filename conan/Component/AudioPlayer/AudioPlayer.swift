@@ -16,8 +16,8 @@ protocol AudioPlayerViewDelegate: AnyObject {
 class AudioPlayer: UIView {
 
     // 图标资源
-    private static let playIcon = UIImage(named: "playIcon") ?? UIImage()
-    private static let pauseIcon = UIImage(named: "pauseIcon") ?? UIImage()
+    static let playIcon = UIImage(named: "playIcon") ?? UIImage()
+    static let pauseIcon = UIImage(named: "pauseIcon") ?? UIImage()
 
     weak var delegate: AudioPlayerViewDelegate?
 
@@ -81,14 +81,14 @@ class AudioPlayer: UIView {
         self.addSubview(currentTimeLabel)
         currentTimeLabel.snp.makeConstraints {
             make in
-            make.width.equalTo(32)
+            make.width.greaterThanOrEqualTo(32)
             make.centerY.equalToSuperview()
             make.left.equalTo(playButton.snp.right)
         }
         self.addSubview(durationLabel)
         durationLabel.snp.makeConstraints {
             make in
-            make.width.equalTo(40)
+            make.width.greaterThanOrEqualTo(40)
             make.centerY.equalToSuperview()
             make.left.equalTo(currentTimeLabel.snp.right)
         }

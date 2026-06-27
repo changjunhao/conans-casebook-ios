@@ -16,6 +16,7 @@ class CaseCardViewController: UIViewController {
     private var cardView: UIView
     private var imageView: UIImageView
     private var logoImageView: UIImageView
+    private var gradientLayer = CAGradientLayer()
     private var isFlipped: Bool = false
 
     /// 由外部注入的导航回调，替代内联的导航逻辑
@@ -33,6 +34,7 @@ class CaseCardViewController: UIViewController {
         cardView.layer.shadowRadius = 14
 
         imageView = UIImageView()
+        imageView.layer.masksToBounds = true
         logoImageView = UIImageView()
 
         self.caseBook = caseBook
@@ -46,14 +48,11 @@ class CaseCardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let cardWidth = self.view.bounds.size.width * CardLayout.widthRatio
-        let cardHeight = cardWidth * CardLayout.aspectRatio
-
         self.view.addSubview(cardView)
         cardView.snp.makeConstraints {
             make in
-            make.width.equalTo(cardWidth)
-            make.height.equalTo(cardHeight)
+            make.width.equalTo(self.view.snp.width).multipliedBy(CardLayout.widthRatio)
+            make.height.equalTo(cardView.snp.width).multipliedBy(CardLayout.aspectRatio)
             make.center.equalTo(self.view)
         }
         cardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRotate)))
@@ -61,21 +60,18 @@ class CaseCardViewController: UIViewController {
         cardView.addSubview(imageView)
         imageView.snp.makeConstraints {
             make in
-            make.width.equalTo(cardView)
-            make.height.equalTo(cardView)
-            make.center.equalTo(cardView)
+            make.edges.equalToSuperview()
         }
-        imageView.kf.setImage(with: URL(string: self.caseBook.url))
-        let caShapeLayer = CAShapeLayer()
-        caShapeLayer.path = UIBezierPath(
-            roundedRect: CGRect(x: 0, y: 0, width: cardWidth, height: cardHeight),
-            byRoundingCorners: .allCorners,
-            cornerRadii: CGSize(width: CardLayout.cornerRadius, height: CardLayout.cornerRadius)
-        ).cgPath
-        imageView.layer.mask = caShapeLayer
+        let imgOptions: KingfisherOptionsInfo? = caseBook.waiting
+            ? [.processor(BlackWhiteProcessor())]
+            : nil
+        imageView.kf.setImage(
+            with: URL(string: self.caseBook.url),
+            placeholder: UIImage(named: "caseIcon"),
+            options: imgOptions
+        )
+        imageView.layer.cornerRadius = CardLayout.cornerRadius
 
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: cardWidth, height: cardHeight)
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
         gradientLayer.colors = [UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor, UIColor(red: 0, green: 0, blue: 0, alpha: 0.8).cgColor]
@@ -84,12 +80,19 @@ class CaseCardViewController: UIViewController {
         cardView.addSubview(logoImageView)
         logoImageView.snp.makeConstraints {
             make in
-            make.width.equalTo(self.view.bounds.size.width * CardLayout.logoWidthRatio)
+            make.width.equalTo(self.view.snp.width).multipliedBy(CardLayout.logoWidthRatio)
             make.height.equalTo(CardLayout.logoHeight)
             make.bottom.equalTo(-20)
             make.centerX.equalTo(cardView)
         }
-        logoImageView.kf.setImage(with: URL(string: self.caseBook.logo))
+        let logoOptions: KingfisherOptionsInfo? = caseBook.waiting
+            ? [.processor(BlackWhiteProcessor())]
+            : nil
+        logoImageView.kf.setImage(
+            with: URL(string: self.caseBook.logo),
+            placeholder: UIImage(named: "caseIcon"),
+            options: logoOptions
+        )
         logoImageView.isUserInteractionEnabled = true
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleNavigate))
         logoImageView.addGestureRecognizer(tapGestureRecognizer)
@@ -98,19 +101,28 @@ class CaseCardViewController: UIViewController {
         imageView.addSubview(triangleView)
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        gradientLayer.frame = imageView.bounds
+    }
+
     @objc private func handleRotate() {
+        let imgOptions: KingfisherOptionsInfo? = caseBook.waiting
+            ? [.processor(BlackWhiteProcessor())]
+            : nil
+
         UIView.transition(with: cardView, duration: 0.5, options: .transitionFlipFromLeft, animations: {
             if self.isFlipped {
                 self.isFlipped = false
-                self.imageView.kf.setImage(with: URL(string: self.caseBook.url))
-                self.logoImageView.kf.setImage(with: URL(string: self.caseBook.logo))
+                self.imageView.kf.setImage(with: URL(string: self.caseBook.url), options: imgOptions)
+                self.logoImageView.kf.setImage(with: URL(string: self.caseBook.logo), options: imgOptions)
             } else {
                 self.isFlipped = true
-                self.imageView.kf.setImage(with: URL(string: self.caseBook.urlh))
+                self.imageView.kf.setImage(with: URL(string: self.caseBook.urlh), options: imgOptions)
                 let flippedLogoUrl = self.caseBook.waiting
                     ? APIConfiguration.waitingLogo
                     : APIConfiguration.availableLogo
-                self.logoImageView.kf.setImage(with: URL(string: flippedLogoUrl))
+                self.logoImageView.kf.setImage(with: URL(string: flippedLogoUrl), options: imgOptions)
             }
         }, completion: nil)
     }

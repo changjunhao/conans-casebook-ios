@@ -10,9 +10,15 @@ import UIKit
 
 final class AppCoordinator {
 
+    private let incidentService: IncidentProviding
+
+    init(incidentService: IncidentProviding = IncidentService()) {
+        self.incidentService = incidentService
+    }
+
     /// 从指定 VC 弹出案件详情页（模态方式）
     func presentCaseDetail(from presenter: UIViewController, caseBook: CaseBook) {
-        let vc = IncidentViewController(id: caseBook.id, incidentService: IncidentService())
+        let vc = IncidentViewController(id: caseBook.id, incidentService: incidentService)
         vc.title = caseBook.title
         let nav = UINavigationController(rootViewController: vc)
         presenter.present(nav, animated: true)

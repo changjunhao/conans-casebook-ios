@@ -106,4 +106,49 @@ final class AudioPlayerViewControllerTests: XCTestCase {
         // 验证 delegate 方法可被调用（无 AVPlayer 时不崩溃）
         controller.audioPlayerDidRequestTogglePlayback()
     }
+
+    // MARK: - 播放状态切换
+
+    func testTogglePlaybackChangesPlayButtonImage() {
+        let initialImage = controller.audioPlayer.playButton.image
+
+        // 切换为播放状态
+        controller.audioPlayerDidRequestTogglePlayback()
+        let playingImage = controller.audioPlayer.playButton.image
+
+        // 切换回暂停状态
+        controller.audioPlayerDidRequestTogglePlayback()
+        let pausedImage = controller.audioPlayer.playButton.image
+
+        // 播放和暂停状态图标应不同
+        XCTAssertNotEqual(playingImage, pausedImage, "播放/暂停状态图标应不同")
+        // 恢复后应与初始图标一致
+        XCTAssertEqual(pausedImage, initialImage, "恢复后图标应与初始一致")
+    }
+
+    func testPlayingStateUsesPauseIcon() {
+        controller.audioPlayerDidRequestTogglePlayback() // 切换为播放
+        XCTAssertEqual(controller.audioPlayer.playButton.image, AudioPlayer.pauseIcon)
+    }
+
+    func testPausedStateUsesPlayIcon() {
+        controller.audioPlayerDidRequestTogglePlayback() // 播放
+        controller.audioPlayerDidRequestTogglePlayback() // 暂停
+        XCTAssertEqual(controller.audioPlayer.playButton.image, AudioPlayer.playIcon)
+    }
+
+    // MARK: - viewWillDisappear
+
+    func testViewWillDisappearDoesNotCrash() {
+        controller.loadViewIfNeeded()
+        controller.viewWillDisappear(false) // 不应崩溃
+    }
+
+    // MARK: - deinit
+
+    func testDeinitDoesNotCrash() {
+        var vc: AudioPlayerViewController? = AudioPlayerViewController(nibName: nil, bundle: nil)
+        vc?.loadViewIfNeeded()
+        vc = nil // 触发 deinit，不应崩溃
+    }
 }

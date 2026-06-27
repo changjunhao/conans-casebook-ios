@@ -76,4 +76,13 @@ final class CaseCardViewControllerTests: XCTestCase {
         let vc = CaseCardViewController(caseBook: caseBook)
         XCTAssertNotNil(vc)
     }
+
+    // MARK: - viewDidLayoutSubviews
+
+    func testViewDidLoadDoesNotCrash() {
+        let caseBook = CaseBook.create(index: 0)
+        let vc = CaseCardViewController(caseBook: caseBook)
+        vc.loadViewIfNeeded() // 触发 viewDidLoad + viewDidLayoutSubviews
+        XCTAssertNotNil(vc.view)
+    }
 }

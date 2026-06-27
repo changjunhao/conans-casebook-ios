@@ -19,9 +19,11 @@ class CaseBookListViewController: UIViewController, UIPageViewControllerDelegate
     private var caseBookList: [CaseBook] = []
     private var nextIndex: Int = 0
     private var pageViewController: UIPageViewController!
+    private var buttonTopConstraint: Constraint?
 
     var currentIndex: Int = 0 {
         didSet {
+            guard caseBookList.indices.contains(currentIndex) else { return }
             button.setTitle(
                 caseBookList[currentIndex].waiting
                     ? String(localized: "静候上线")
@@ -72,13 +74,19 @@ class CaseBookListViewController: UIViewController, UIPageViewControllerDelegate
         pageViewController.dataSource = self
 
         self.addChild(pageViewController)
-        pageViewController.view.frame = self.view.frame
         view.addSubview(pageViewController.view)
+        pageViewController.view.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         pageViewController.didMove(toParent: self)
     }
 
     private func loadCaseBooks() {
         caseBookList = caseBookService.fetchCaseBooks()
+        guard !caseBookList.isEmpty else {
+            showEmptyState()
+            return
+        }
         caseCardViewControllers = caseBookList.map { caseBook in
             let vc = CaseCardViewController(caseBook: caseBook)
             vc.onNavigate = { [weak self] in
@@ -94,6 +102,17 @@ class CaseBookListViewController: UIViewController, UIPageViewControllerDelegate
         )
     }
 
+    private func showEmptyState() {
+        let label = UILabel()
+        label.text = String(localized: "暂无数据")
+        label.textColor = .secondaryLabel
+        label.font = .systemFont(ofSize: 17)
+        self.view.addSubview(label)
+        label.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+    }
+
     private func setupButton() {
         button.backgroundColor = UIColor.secondarySystemBackground
         button.tintColor = .label
@@ -102,21 +121,26 @@ class CaseBookListViewController: UIViewController, UIPageViewControllerDelegate
         button.layer.masksToBounds = true
         self.view.addSubview(button)
 
-        // 按钮位置：卡片底部 + 20pt 间距
-        let cardBottom = CardLayout.bottomYOffset(viewBounds: self.view.bounds)
         button.snp.makeConstraints {
             make in
             make.width.equalTo(120)
             make.height.equalTo(60)
-            make.top.equalToSuperview().offset(cardBottom)
+            buttonTopConstraint = make.top.equalToSuperview().offset(0).constraint
             make.centerX.equalToSuperview()
         }
         button.addTarget(self, action: #selector(handleNavigate), for: .touchUpInside)
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let cardBottom = CardLayout.bottomYOffset(viewBounds: self.view.bounds)
+        buttonTopConstraint?.update(offset: cardBottom)
+    }
+
     // MARK: - Actions
 
     @objc private func handleNavigate() {
+        guard caseBookList.indices.contains(currentIndex) else { return }
         coordinator.navigate(from: self, caseBook: caseBookList[currentIndex])
     }
 

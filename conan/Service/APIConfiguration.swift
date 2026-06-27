@@ -18,8 +18,10 @@ enum APIConfiguration {
     }
 
     /// 电影封面图（横版海报，翻转卡片时使用）
+    /// 最后一部电影没有横版海报，回退到第一张
     static func movieImageHorizontal(index: Int) -> String {
-        "\(baseURL)/m\(index == 20 ? 1 : index)h.jpg?imageView2/0/interlace/1"
+        let resolved = (index >= CaseBook.caseTitles.count) ? 1 : index
+        return "\(baseURL)/m\(resolved)h.jpg?imageView2/0/interlace/1"
     }
 
     /// 电影 Logo 图

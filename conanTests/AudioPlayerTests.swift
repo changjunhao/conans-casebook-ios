@@ -127,4 +127,52 @@ final class AudioPlayerTests: XCTestCase {
         XCTAssertNotNil(player.playButton.gestureRecognizers)
         XCTAssertFalse(player.playButton.gestureRecognizers!.isEmpty)
     }
+
+    // MARK: - 视图层级
+
+    func testMasksToBounds() {
+        XCTAssertTrue(player.layer.masksToBounds, "AudioPlayer 应开启 masksToBounds")
+    }
+
+    func testPlayButtonInitialImage() {
+        XCTAssertNotNil(player.playButton.image, "播放按钮应有初始图标")
+    }
+
+    func testProgressViewInitialValue() {
+        XCTAssertEqual(player.progressView.progress, 0.0, accuracy: 0.001)
+    }
+
+    // MARK: - 边界值
+
+    func testPercentZero() {
+        player.percent = 0.0
+        XCTAssertEqual(player.progressView.progress, 0.0, accuracy: 0.001)
+    }
+
+    func testDurationEmptyString() {
+        player.duration = ""
+        XCTAssertEqual(player.durationLabel.text, "")
+    }
+
+    func testCurrentTimeEmptyString() {
+        player.currentTime = ""
+        XCTAssertEqual(player.currentTimeLabel.text, "")
+    }
+
+    // MARK: - 静态图标常量
+
+    func testPlayIconIsAccessible() {
+        let icon = AudioPlayer.playIcon
+        XCTAssertNotNil(icon, "playIcon 应可访问")
+    }
+
+    func testPauseIconIsAccessible() {
+        let icon = AudioPlayer.pauseIcon
+        XCTAssertNotNil(icon, "pauseIcon 应可访问")
+    }
+
+    func testPlayAndPauseIconsAreDifferent() {
+        // 两个图标不应是同一个对象
+        XCTAssertFalse(AudioPlayer.playIcon === AudioPlayer.pauseIcon)
+    }
 }

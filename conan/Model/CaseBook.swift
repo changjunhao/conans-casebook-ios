@@ -44,15 +44,19 @@ extension CaseBook {
         "枫红的恋歌",
     ]
 
+    /// 已有详情页内容的电影 ID（1-based），新增电影需在此添加
+    static let availableMovieIds: Set<Int> = Set(1...13)
+
     static func create(index i: Int) -> CaseBook {
-        CaseBook(
-            id: i + 1,
+        let id = i + 1
+        return CaseBook(
+            id: id,
             title: caseTitles[i],
-            url: APIConfiguration.movieImage(index: i + 1),
-            urlh: APIConfiguration.movieImageHorizontal(index: i + 1),
-            logo: APIConfiguration.movieLogo(index: i + 1),
+            url: APIConfiguration.movieImage(index: id),
+            urlh: APIConfiguration.movieImageHorizontal(index: id),
+            logo: APIConfiguration.movieLogo(index: id),
             year: 1997 + i,
-            waiting: 1997 + i > 2009
+            waiting: !availableMovieIds.contains(id)
         )
     }
 }

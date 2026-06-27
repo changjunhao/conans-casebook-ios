@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
 
         let window = UIWindow(windowScene: windowScene)
-        let appCoordinator = AppCoordinator()
+        let appCoordinator = AppCoordinator(incidentService: IncidentService())
         self.coordinator = appCoordinator
         let rootVC = CaseBookListViewController(caseBookService: CaseBookService(), coordinator: appCoordinator)
         window.rootViewController = rootVC

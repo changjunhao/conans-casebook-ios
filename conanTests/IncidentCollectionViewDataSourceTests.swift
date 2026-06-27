@@ -13,7 +13,7 @@ final class IncidentCollectionViewDataSourceTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        dataSource = IncidentCollectionViewDataSource(incidentId: 1, viewWidth: 375)
+        dataSource = IncidentCollectionViewDataSource(incidentId: 1)
     }
 
     override func tearDown() {
@@ -94,8 +94,8 @@ final class IncidentCollectionViewDataSourceTests: XCTestCase {
     }
 
     func testSizeForItemAtWiderViewProducesTallerCell() {
-        let narrowDS = IncidentCollectionViewDataSource(incidentId: 1, viewWidth: 320)
-        let wideDS = IncidentCollectionViewDataSource(incidentId: 1, viewWidth: 414)
+        let narrowDS = IncidentCollectionViewDataSource(incidentId: 1)
+        let wideDS = IncidentCollectionViewDataSource(incidentId: 1)
 
         let longDesc = String(repeating: "测试文字", count: 50)
         let incident = Incident(
@@ -123,7 +123,7 @@ final class IncidentCollectionViewDataSourceTests: XCTestCase {
         let cv = makeCollectionView()
         let layout = UICollectionViewFlowLayout()
         let size = dataSource.collectionView(cv, layout: layout, referenceSizeForHeaderInSection: 0)
-        // 高度 = viewWidth * 0.9 * 0.64
+        // 高度 = collectionView.bounds.width * 0.9 * 0.64
         let expectedHeight: CGFloat = 375 * 0.9 * 0.64
         XCTAssertEqual(size.width, 375, accuracy: 0.01)
         XCTAssertEqual(size.height, expectedHeight, accuracy: 0.01)

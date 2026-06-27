@@ -33,6 +33,38 @@ final class IncidentServiceTests: XCTestCase {
         }
     }
 
+    // MARK: - URLProtocol Mock
+
+    private class MockURLProtocol: URLProtocol {
+        static var handler: ((URLRequest) throws -> (HTTPURLResponse, Data))?
+
+        override class func canInit(with request: URLRequest) -> Bool { true }
+        override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
+
+        override func startLoading() {
+            guard let handler = MockURLProtocol.handler else {
+                client?.urlProtocolDidFinishLoading(self)
+                return
+            }
+            do {
+                let (response, data) = try handler(request)
+                client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+                client?.urlProtocol(self, didLoad: data)
+                client?.urlProtocolDidFinishLoading(self)
+            } catch {
+                client?.urlProtocol(self, didFailWithError: error)
+            }
+        }
+
+        override func stopLoading() {}
+    }
+
+    private func makeSession() -> URLSession {
+        let config = URLSessionConfiguration.ephemeral
+        config.protocolClasses = [MockURLProtocol.self]
+        return URLSession(configuration: config)
+    }
+
     // MARK: - Protocol Conformance
 
     func testMockProviderSuccess() async throws {
@@ -89,5 +121,71 @@ final class IncidentServiceTests: XCTestCase {
         } catch {
             XCTFail("错误类型不匹配：\(error)")
         }
+    }
+
+    // MARK: - IncidentService 端到端测试（URLProtocol Mock）
+
+    func testServiceEndToEndSuccess() async throws {
+        let incident = Incident(
+            title: "端到端测试",
+            section: [
+                IncidentSectionItem(title: "第一节", desc: "描述", image: "img")
+            ]
+        )
+        let data = try JSONEncoder().encode(incident)
+        let response = HTTPURLResponse(
+            url: URL(string: APIConfiguration.incidentAPI(id: 1))!,
+            statusCode: 200,
+            httpVersion: nil,
+            headerFields: nil
+        )!
+        MockURLProtocol.handler = { _ in (response, data) }
+
+        let service = IncidentService(session: makeSession())
+        let result = try await service.loadIncident(id: 1)
+        XCTAssertEqual(result.title, "端到端测试")
+        XCTAssertEqual(result.section.count, 1)
+        XCTAssertEqual(result.section.first?.title, "第一节")
+    }
+
+    func testServiceEndToEndNetworkError() async {
+        MockURLProtocol.handler = { _ in
+            throw URLError(.notConnectedToInternet)
+        }
+
+        let service = IncidentService(session: makeSession())
+        do {
+            _ = try await service.loadIncident(id: 1)
+            XCTFail("应该抛出网络错误")
+        } catch let error as URLError {
+            XCTAssertEqual(error.code, .notConnectedToInternet)
+        } catch {
+            XCTFail("错误类型不匹配：\(error)")
+        }
+    }
+
+    func testServiceEndToEndDecodingError() async {
+        let badData = "not json".data(using: .utf8)!
+        let response = HTTPURLResponse(
+            url: URL(string: APIConfiguration.incidentAPI(id: 1))!,
+            statusCode: 200,
+            httpVersion: nil,
+            headerFields: nil
+        )!
+        MockURLProtocol.handler = { _ in (response, badData) }
+
+        let service = IncidentService(session: makeSession())
+        do {
+            _ = try await service.loadIncident(id: 1)
+            XCTFail("应该抛出解码错误")
+        } catch {
+            XCTAssertTrue(error is DecodingError)
+        }
+    }
+
+    func testServiceCustomSessionInit() {
+        let session = makeSession()
+        let service = IncidentService(session: session)
+        XCTAssertNotNil(service)
     }
 }

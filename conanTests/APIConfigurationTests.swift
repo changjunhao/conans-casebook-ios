@@ -38,8 +38,15 @@ final class APIConfigurationTests: XCTestCase {
     }
 
     func testMovieImageHorizontalIndex20() {
-        // index==20 时回退到 index 1
+        // index 20 不是最后一部（共21部），应返回 m20h
         let url = APIConfiguration.movieImageHorizontal(index: 20)
+        XCTAssertEqual(url, "https://oss-materials.ifable.cn/conan/m20h.jpg?imageView2/0/interlace/1")
+    }
+
+    func testMovieImageHorizontalLastMovieFallsBack() {
+        // 最后一部电影（index == caseTitles.count）回退到 m1h
+        let lastIndex = CaseBook.caseTitles.count
+        let url = APIConfiguration.movieImageHorizontal(index: lastIndex)
         XCTAssertEqual(url, "https://oss-materials.ifable.cn/conan/m1h.jpg?imageView2/0/interlace/1")
     }
 

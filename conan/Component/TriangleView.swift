@@ -11,7 +11,12 @@ import SnapKit
 
 class TriangleView: UIView {
 
+    private let fillColor: UIColor
+
     init(caseBook: CaseBook) {
+        self.fillColor = caseBook.waiting
+            ? UIColor(white: 0.5, alpha: 1)
+            : UIColor(red: 1, green: 0.8, blue: 0.18, alpha: 1)
         super.init(frame: CGRect(x: 0, y: 0, width: 56, height: 56))
 
         self.backgroundColor = .clear
@@ -40,7 +45,7 @@ class TriangleView: UIView {
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         context.setAllowsAntialiasing(true) //抗锯齿设置
-        context.setFillColor(UIColor(red: 1, green: 0.8, blue: 0.18, alpha: 1).cgColor)
+        context.setFillColor(fillColor.cgColor)
         let p1: CGMutablePath = CGMutablePath()
         p1.addLines(between: [CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 56), CGPoint(x: 56, y: 0)])
         context.addPath(p1)

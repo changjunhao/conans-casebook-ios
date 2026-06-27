@@ -71,4 +71,24 @@ final class CaseBookListViewControllerTests: XCTestCase {
         XCTAssertNotNil(vc)
         _ = vc.view // trigger viewDidLoad
     }
+
+    // MARK: - 空数据安全
+
+    func testEmptyDataDoesNotCrash() {
+        let provider = MockCaseBookProvider(books: [])
+        let coordinator = AppCoordinator()
+        let vc = CaseBookListViewController(caseBookService: provider, coordinator: coordinator)
+        _ = vc.view // 触发 viewDidLoad + loadCaseBooks，不应崩溃
+        XCTAssertEqual(vc.currentIndex, 0)
+    }
+
+    func testCurrentIndexOutOfBoundsIsGuarded() {
+        let provider = MockCaseBookProvider(books: [CaseBook.create(index: 0)])
+        let coordinator = AppCoordinator()
+        let vc = CaseBookListViewController(caseBookService: provider, coordinator: coordinator)
+        _ = vc.view
+        // 设置越界 index 不应崩溃
+        vc.currentIndex = 100
+        vc.currentIndex = -1
+    }
 }

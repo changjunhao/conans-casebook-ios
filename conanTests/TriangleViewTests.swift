@@ -72,4 +72,33 @@ final class TriangleViewTests: XCTestCase {
         XCTAssertEqual(view.bounds.width, 56, accuracy: 0.01)
         XCTAssertEqual(view.bounds.height, 56, accuracy: 0.01)
     }
+
+    // MARK: - waiting 状态
+
+    func testWaitingCardDoesNotCrash() {
+        let caseBook = CaseBook(
+            id: 99, title: "未来", url: "", urlh: "", logo: "", year: 2099, waiting: true
+        )
+        let view = TriangleView(caseBook: caseBook)
+        XCTAssertNotNil(view)
+    }
+
+    func testWaitingCardDrawDoesNotCrash() {
+        let caseBook = CaseBook(
+            id: 99, title: "未来", url: "", urlh: "", logo: "", year: 2099, waiting: true
+        )
+        let view = TriangleView(caseBook: caseBook)
+        // 触发 draw，不应崩溃
+        UIGraphicsBeginImageContext(view.bounds.size)
+        view.draw(view.bounds)
+        UIGraphicsEndImageContext()
+    }
+
+    func testNonWaitingCardDrawDoesNotCrash() {
+        let caseBook = CaseBook.create(index: 0) // waiting=false
+        let view = TriangleView(caseBook: caseBook)
+        UIGraphicsBeginImageContext(view.bounds.size)
+        view.draw(view.bounds)
+        UIGraphicsEndImageContext()
+    }
 }

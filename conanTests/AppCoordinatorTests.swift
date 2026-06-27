@@ -8,10 +8,29 @@ import XCTest
 
 final class AppCoordinatorTests: XCTestCase {
 
+    // MARK: - Mock
+
+    struct MockIncidentProvider: IncidentProviding {
+        let result: Result<Incident, Error>
+
+        func loadIncident(id: Int) async throws -> Incident {
+            switch result {
+            case .success(let incident): return incident
+            case .failure(let error): throw error
+            }
+        }
+    }
+
     // MARK: - 初始化
 
     func testCoordinatorInit() {
         let coordinator = AppCoordinator()
+        XCTAssertNotNil(coordinator)
+    }
+
+    func testCoordinatorInitWithCustomService() {
+        let mock = MockIncidentProvider(result: .success(Incident(title: "测试", section: [])))
+        let coordinator = AppCoordinator(incidentService: mock)
         XCTAssertNotNil(coordinator)
     }
 
