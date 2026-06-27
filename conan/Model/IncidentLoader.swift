@@ -9,11 +9,17 @@
 import Foundation
 
 struct IncidentLoader {
+    let session: URLSession
+
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
+
     func loadIncident(id: Int) async throws -> Incident {
         guard let url = URL(string: APIConfiguration.incidentAPI(id: id)) else {
             throw URLError(.badURL)
         }
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let (data, _) = try await session.data(from: url)
         return try JSONDecoder().decode(Incident.self, from: data)
     }
 }

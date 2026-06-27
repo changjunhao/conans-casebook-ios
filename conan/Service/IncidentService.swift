@@ -13,7 +13,13 @@ protocol IncidentProviding {
 }
 
 struct IncidentService: IncidentProviding {
+    private let loader: IncidentLoader
+
+    init(session: URLSession = .shared) {
+        self.loader = IncidentLoader(session: session)
+    }
+
     func loadIncident(id: Int) async throws -> Incident {
-        try await IncidentLoader().loadIncident(id: id)
+        try await loader.loadIncident(id: id)
     }
 }

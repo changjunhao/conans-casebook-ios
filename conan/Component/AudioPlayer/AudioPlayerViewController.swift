@@ -110,7 +110,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerViewDelegate {
         self.playing = false
     }
 
-    private func timeFilter(seconds: Double) -> String {
+    func timeFilter(seconds: Double) -> String {
         let minute = Int((seconds / 60).truncatingRemainder(dividingBy: 60))
         let second = Int(seconds.truncatingRemainder(dividingBy: 60))
         let secondStr = second < 10 ? "0\(second)" : "\(second)"

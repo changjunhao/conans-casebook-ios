@@ -31,10 +31,36 @@
 		A1B2C3D40001000000000007 /* CardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40002000000000007 /* CardLayout.swift */; };
 		A1B2C3D40005000000000001 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40004000000000001 /* Localizable.xcstrings */; };
 		A1B2C3D40007000000000002 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40007000000000001 /* SceneDelegate.swift */; };
+		A1B2C3D40011000000000001 /* CaseBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40010000000000001 /* CaseBookTests.swift */; };
+		A1B2C3D40011000000000002 /* IncidentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40010000000000002 /* IncidentTests.swift */; };
+		A1B2C3D40011000000000003 /* APIConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40010000000000003 /* APIConfigurationTests.swift */; };
+		A1B2C3D40011000000000004 /* CaseBookServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40010000000000004 /* CaseBookServiceTests.swift */; };
+		A1B2C3D40011000000000005 /* IncidentServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40010000000000005 /* IncidentServiceTests.swift */; };
+		A1B2C3D40011000000000006 /* IncidentLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40010000000000006 /* IncidentLoaderTests.swift */; };
+		A1B2C3D40011000000000007 /* CardLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40010000000000007 /* CardLayoutTests.swift */; };
+		A1B2C3D40011000000000008 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40010000000000008 /* AppCoordinatorTests.swift */; };
+		A1B2C3D40011000000000009 /* IncidentCollectionViewDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40010000000000009 /* IncidentCollectionViewDataSourceTests.swift */; };
+		A1B2C3D4001100000000000A /* AudioPlayerViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4001000000000000A /* AudioPlayerViewControllerTests.swift */; };
+		A1B2C3D40021000000000001 /* AudioPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40020000000000001 /* AudioPlayerTests.swift */; };
+		A1B2C3D40021000000000002 /* TriangleViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40020000000000002 /* TriangleViewTests.swift */; };
+		A1B2C3D40021000000000003 /* CaseCardViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40020000000000003 /* CaseCardViewControllerTests.swift */; };
+		A1B2C3D40021000000000004 /* IncidentItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40020000000000004 /* IncidentItemTests.swift */; };
+		A1B2C3D40021000000000005 /* ReuseIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40020000000000005 /* ReuseIdentifierTests.swift */; };
+		A1B2C3D40021000000000006 /* CaseBookListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40020000000000006 /* CaseBookListViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A1B2C3D40012000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9004CE322472832C0015D21B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9004CE392472832C0015D21B;
+			remoteInfo = conan;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		9004CE3A2472832C0015D21B /* 柯南事件簿.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "柯南事件簿.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9004CE3A2472832C0015D21B /* u67efu5357u4e8bu4ef6u7c3f.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = u67efu5357u4e8bu4ef6u7c3f.app; path = "柯南事件簿.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9004CE3D2472832C0015D21B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9004CE46247283310015D21B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9004CE49247283310015D21B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +84,23 @@
 		A1B2C3D40002000000000007 /* CardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardLayout.swift; sourceTree = "<group>"; };
 		A1B2C3D40004000000000001 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		A1B2C3D40007000000000001 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A1B2C3D40010000000000001 /* CaseBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseBookTests.swift; sourceTree = "<group>"; };
+		A1B2C3D40010000000000002 /* IncidentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentTests.swift; sourceTree = "<group>"; };
+		A1B2C3D40010000000000003 /* APIConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfigurationTests.swift; sourceTree = "<group>"; };
+		A1B2C3D40010000000000004 /* CaseBookServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseBookServiceTests.swift; sourceTree = "<group>"; };
+		A1B2C3D40010000000000005 /* IncidentServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentServiceTests.swift; sourceTree = "<group>"; };
+		A1B2C3D40010000000000006 /* IncidentLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentLoaderTests.swift; sourceTree = "<group>"; };
+		A1B2C3D40010000000000007 /* CardLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardLayoutTests.swift; sourceTree = "<group>"; };
+		A1B2C3D40010000000000008 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
+		A1B2C3D40010000000000009 /* IncidentCollectionViewDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentCollectionViewDataSourceTests.swift; sourceTree = "<group>"; };
+		A1B2C3D4001000000000000A /* AudioPlayerViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewControllerTests.swift; sourceTree = "<group>"; };
+		A1B2C3D4001000000000000B /* conanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = conanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3D40020000000000001 /* AudioPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerTests.swift; sourceTree = "<group>"; };
+		A1B2C3D40020000000000002 /* TriangleViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleViewTests.swift; sourceTree = "<group>"; };
+		A1B2C3D40020000000000003 /* CaseCardViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseCardViewControllerTests.swift; sourceTree = "<group>"; };
+		A1B2C3D40020000000000004 /* IncidentItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncidentItemTests.swift; sourceTree = "<group>"; };
+		A1B2C3D40020000000000005 /* ReuseIdentifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierTests.swift; sourceTree = "<group>"; };
+		A1B2C3D40020000000000006 /* CaseBookListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseBookListViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +113,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A1B2C3D40013000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -77,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				9004CE3C2472832C0015D21B /* conan */,
+				A1B2C3D40014000000000001 /* conanTests */,
 				9004CE3B2472832C0015D21B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,7 +135,8 @@
 		9004CE3B2472832C0015D21B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9004CE3A2472832C0015D21B /* 柯南事件簿.app */,
+				9004CE3A2472832C0015D21B /* u67efu5357u4e8bu4ef6u7c3f.app */,
+				A1B2C3D4001000000000000B /* conanTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,6 +227,29 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		A1B2C3D40014000000000001 /* conanTests */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D40010000000000001 /* CaseBookTests.swift */,
+				A1B2C3D40010000000000002 /* IncidentTests.swift */,
+				A1B2C3D40010000000000003 /* APIConfigurationTests.swift */,
+				A1B2C3D40010000000000004 /* CaseBookServiceTests.swift */,
+				A1B2C3D40010000000000005 /* IncidentServiceTests.swift */,
+				A1B2C3D40010000000000006 /* IncidentLoaderTests.swift */,
+				A1B2C3D40010000000000007 /* CardLayoutTests.swift */,
+				A1B2C3D40010000000000008 /* AppCoordinatorTests.swift */,
+				A1B2C3D40010000000000009 /* IncidentCollectionViewDataSourceTests.swift */,
+				A1B2C3D4001000000000000A /* AudioPlayerViewControllerTests.swift */,
+				A1B2C3D40020000000000001 /* AudioPlayerTests.swift */,
+				A1B2C3D40020000000000002 /* TriangleViewTests.swift */,
+				A1B2C3D40020000000000003 /* CaseCardViewControllerTests.swift */,
+				A1B2C3D40020000000000004 /* IncidentItemTests.swift */,
+				A1B2C3D40020000000000005 /* ReuseIdentifierTests.swift */,
+				A1B2C3D40020000000000006 /* CaseBookListViewControllerTests.swift */,
+			);
+			path = conanTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -192,8 +267,26 @@
 			);
 			name = conan;
 			productName = conan;
-			productReference = 9004CE3A2472832C0015D21B /* 柯南事件簿.app */;
+			productReference = 9004CE3A2472832C0015D21B /* u67efu5357u4e8bu4ef6u7c3f.app */;
 			productType = "com.apple.product-type.application";
+		};
+		A1B2C3D40015000000000001 /* conanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B2C3D40017000000000001 /* Build configuration list for PBXNativeTarget "conanTests" */;
+			buildPhases = (
+				A1B2C3D40013000000000003 /* Sources */,
+				A1B2C3D40013000000000004 /* Resources */,
+				A1B2C3D40013000000000002 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1B2C3D40016000000000002 /* PBXTargetDependency */,
+			);
+			name = conanTests;
+			productName = conanTests;
+			productReference = A1B2C3D4001000000000000B /* conanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -230,6 +323,7 @@
 			projectRoot = "";
 			targets = (
 				9004CE392472832C0015D21B /* conan */,
+				A1B2C3D40015000000000001 /* conanTests */,
 			);
 		};
 /* End PBXProject section */
@@ -242,6 +336,13 @@
 				9004CE4A247283310015D21B /* LaunchScreen.storyboard in Resources */,
 				9004CE47247283310015D21B /* Assets.xcassets in Resources */,
 				A1B2C3D40005000000000001 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1B2C3D40013000000000004 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +375,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A1B2C3D40013000000000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D40011000000000001 /* CaseBookTests.swift in Sources */,
+				A1B2C3D40011000000000002 /* IncidentTests.swift in Sources */,
+				A1B2C3D40011000000000003 /* APIConfigurationTests.swift in Sources */,
+				A1B2C3D40011000000000004 /* CaseBookServiceTests.swift in Sources */,
+				A1B2C3D40011000000000005 /* IncidentServiceTests.swift in Sources */,
+				A1B2C3D40011000000000006 /* IncidentLoaderTests.swift in Sources */,
+				A1B2C3D40011000000000007 /* CardLayoutTests.swift in Sources */,
+				A1B2C3D40011000000000008 /* AppCoordinatorTests.swift in Sources */,
+				A1B2C3D40011000000000009 /* IncidentCollectionViewDataSourceTests.swift in Sources */,
+				A1B2C3D4001100000000000A /* AudioPlayerViewControllerTests.swift in Sources */,
+				A1B2C3D40021000000000001 /* AudioPlayerTests.swift in Sources */,
+				A1B2C3D40021000000000002 /* TriangleViewTests.swift in Sources */,
+				A1B2C3D40021000000000003 /* CaseCardViewControllerTests.swift in Sources */,
+				A1B2C3D40021000000000004 /* IncidentItemTests.swift in Sources */,
+				A1B2C3D40021000000000005 /* ReuseIdentifierTests.swift in Sources */,
+				A1B2C3D40021000000000006 /* CaseBookListViewControllerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A1B2C3D40016000000000002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9004CE392472832C0015D21B /* conan */;
+			targetProxy = A1B2C3D40012000000000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9004CE48247283310015D21B /* LaunchScreen.storyboard */ = {
@@ -426,6 +558,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.ifable.conan;
+				PRODUCT_MODULE_NAME = conan;
 				PRODUCT_NAME = "柯南事件簿";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -448,6 +581,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.ifable.conan;
+				PRODUCT_MODULE_NAME = conan;
 				PRODUCT_NAME = "柯南事件簿";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -455,6 +589,38 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A1B2C3D40018000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.ifable.conanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/柯南事件簿.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/柯南事件簿";
+			};
+			name = Debug;
+		};
+		A1B2C3D40018000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.ifable.conanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/柯南事件簿.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/柯南事件簿";
 			};
 			name = Release;
 		};
@@ -475,6 +641,15 @@
 			buildConfigurations = (
 				9004CE4F247283310015D21B /* Debug */,
 				9004CE50247283310015D21B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3D40017000000000001 /* Build configuration list for PBXNativeTarget "conanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D40018000000000001 /* Debug */,
+				A1B2C3D40018000000000002 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
